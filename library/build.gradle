@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+
+afterEvaluate {
+  generateReleaseBuildConfig.enabled = false
+}
+
+android {
+  compileSdkVersion versions.compileSdk
+  buildToolsVersion versions.buildTools
+
+  defaultConfig {
+    minSdkVersion versions.minSdk
+    targetSdkVersion versions.targetSdk // Needed for Integration Tests.
+
+    testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_7
+    targetCompatibility JavaVersion.VERSION_1_7
+  }
+}
+
+dependencies {
+  compile deps.rx.java
+  compile deps.support.annotations
+
+  provided deps.autoValue.runtime
+  annotationProcessor deps.autoValue.compiler
+
+  testCompile deps.test.junit
+  testCompile deps.test.mockito
+  testCompile deps.test.assertj3
+
+  androidTestCompile deps.support.test.espresso.core
+  androidTestCompile deps.support.test.runner
+  androidTestCompile deps.support.test.rules
+  androidTestCompile deps.support.test.uiautomator
+}
+
+apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
