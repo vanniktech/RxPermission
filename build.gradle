@@ -71,6 +71,9 @@ codeQualityTools {
   ktlint {
     toolVersion = '0.9.1'
   }
+  errorProne {
+    toolVersion = '2.0.21'
+  }
   lint {
     textReport = true
   }
