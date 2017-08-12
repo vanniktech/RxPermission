@@ -1,2 +1,2 @@
-# RxPermission
-Reactive permissions for Android
+RxPermission
+============
