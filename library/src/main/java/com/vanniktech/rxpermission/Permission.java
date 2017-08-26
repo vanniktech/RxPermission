@@ -26,8 +26,10 @@ import static com.vanniktech.rxpermission.Permission.State.REVOKED_BY_POLICY;
     return new AutoValue_Permission(name, REVOKED_BY_POLICY);
   }
 
+  /** The name of the permission. For instance android.permission.CAMERA */
   @NonNull public abstract String name();
 
+  /** The state of the permission. */
   @NonNull public abstract State state();
 
   public enum State {
@@ -45,7 +47,7 @@ import static com.vanniktech.rxpermission.Permission.State.REVOKED_BY_POLICY;
      */
     DENIED_NOT_SHOWN,
 
-    /** Permission has been denied by a policy. */
+    /** Permission has been revoked by a policy. */
     REVOKED_BY_POLICY
   }
 }
