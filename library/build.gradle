@@ -10,7 +10,7 @@ android {
 
   defaultConfig {
     minSdkVersion versions.minSdk
-    targetSdkVersion versions.targetSdk // Needed for Integration Tests.
+    targetSdkVersion 23 // Needed for Integration Tests.
 
     testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
   }
