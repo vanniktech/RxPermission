@@ -4,22 +4,21 @@ apply plugin: 'com.vanniktech.android.junit.jacoco'
 
 buildscript {
   ext.versions = [
-    minSdk: 19,
-    compileSdk: 26,
-    targetSdk: 26,
-    buildTools: '26.0.1',
-    supportLibrary: '26.0.1',
-    espresso: '3.0.0',
-    testRules: '1.0.0',
+    minSdk: 15,
+    compileSdk: 27,
+    targetSdk: 27,
+    supportLibrary: '27.0.1',
+    espresso: '3.0.1',
+    testRules: '1.0.1',
   ]
 
   ext.deps = [
     'rx': [
-      'java': 'io.reactivex.rxjava2:rxjava:2.1.2',
+      'java': 'io.reactivex.rxjava2:rxjava:2.1.6',
     ],
     'autoValue': [
-      'runtime': 'com.google.auto.value:auto-value:1.4.1',
-      'compiler': 'com.jakewharton.auto.value:auto-value-annotations:1.4',
+      'compiler': 'com.google.auto.value:auto-value:1.5.2',
+      'runtime': 'com.jakewharton.auto.value:auto-value-annotations:1.5',
     ],
     'support': [
       'annotations': "com.android.support:support-annotations:${versions.supportLibrary}",
@@ -50,29 +49,29 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.7.0'
-    classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.7.0'
+    classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.8.0'
+    classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.10.0'
 
-    classpath 'com.android.tools.build:gradle:2.3.3'
-    classpath 'com.github.ben-manes:gradle-versions-plugin:0.15.0'
+    classpath 'com.android.tools.build:gradle:3.0.0'
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
   }
 }
 
 codeQualityTools {
   checkstyle {
-    toolVersion = '8.1'
+    toolVersion = '8.4'
   }
   pmd {
     toolVersion = '5.8.1'
   }
   detekt {
-    toolVersion = '1.0.0.M13.2'
+    toolVersion = '1.0.0.RC5-3'
   }
   ktlint {
-    toolVersion = '0.9.1'
+    toolVersion = '0.12.0'
   }
   errorProne {
-    toolVersion = '2.0.21'
+    toolVersion = '2.1.2'
   }
   lint {
     textReport = true
@@ -93,6 +92,6 @@ subprojects {
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '4.1'
+  gradleVersion = '4.3'
   distributionType = Wrapper.DistributionType.ALL
 }

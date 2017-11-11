@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
   compileSdkVersion versions.compileSdk
-  buildToolsVersion versions.buildTools
 
   defaultConfig {
     applicationId 'com.vanniktech.rxpermission.sample'
@@ -20,7 +19,7 @@ android {
 }
 
 dependencies {
-  compile project(':library')
+  implementation project(':library')
 
-  compile deps.support.appCompat
+  implementation deps.support.appCompat
 }
