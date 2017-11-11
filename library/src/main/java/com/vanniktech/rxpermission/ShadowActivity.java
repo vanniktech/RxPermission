@@ -6,12 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.RestrictTo;
 
 import static android.os.Build.VERSION_CODES.M;
-import static android.support.annotation.RestrictTo.Scope.LIBRARY;
 
-@TargetApi(M) @RestrictTo(LIBRARY) public final class ShadowActivity extends Activity {
+@TargetApi(M) public final class ShadowActivity extends Activity {
   private static final String ARG_PERMISSIONS = "permissions";
   private static final String SAVE_RATIONALE = "save-rationale";
   private static final int REQUEST_CODE = 42;
