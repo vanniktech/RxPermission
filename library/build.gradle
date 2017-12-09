@@ -9,6 +9,8 @@ android {
 
   defaultConfig {
     minSdkVersion versions.minSdk
+
+    //noinspection OldTargetApi
     targetSdkVersion 23 // Needed for Integration Tests.
 
     testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
