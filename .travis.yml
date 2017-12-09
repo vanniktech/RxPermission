@@ -17,9 +17,9 @@ before_install:
   # Install the rest of tools (e.g., avdmanager)
   - sdkmanager tools
   # Install the system image
-  - sdkmanager "system-images;android-25;google_apis;armeabi-v7a"
+  - sdkmanager "system-images;android-24;google_apis;armeabi-v7a"
   # Create and start emulator for the script. Meant to race the install task.
-  - echo no | avdmanager create avd --force -n test -k "system-images;android-25;google_apis;armeabi-v7a"
+  - echo no | avdmanager create avd --force -n test -k "system-images;android-24;google_apis;armeabi-v7a"
   - $ANDROID_HOME/emulator/emulator -avd test -no-skin -no-audio -no-window &
 
 install: ./gradlew clean assemble assembleAndroidTest --stacktrace
@@ -38,7 +38,7 @@ env:
   global:
     - secure: "Y84zGKgBbYtwOG9SLc5QOeKOaQO7QXmMO63Mc7chmKraW3FyRLJfMs8Qwq9+WQ2davpZI/yVyo0V0Ka7Jwx2163iQve1QskDhTrEHRLlAZDjqV+7S7y1O04ehPl3ix3fTuf3Dkwfxj1nKbpWpFAUTc8Isgltiev2b2ge5h03pbNIHxYDQvhExy+m+hc2ffme2w7jlFmnYMQQNNROo2X21B/7OYH8VY1ajVcMZ0Do9QPAeu1dPwwYBqMTtUal/8CoLSE8p8e0gW0KE4c+c8Y8qndmKyCYtlsgXMG/PMLV2uJy6zZ/57edxNWELwA92ChlXfK731W0kpSLk9n4n7XAkcYGa0+wX/45V8VsDYyFCV4WeNWKc3jgLaD/MYKE2R3KMSFaVvipcnmLr8fl+GEVNDI+TsW60df1rEVKui50L6nSLCYyJK3hTnMGE8mZidqOiGcNCDseWCoZBnUbpZcduW2FghdsZRUsemBWkJd3jeBmHaRxTaV1YyfGJqW5i3ECxbDn8l9QFt4gcWzzhp3/ER2xtccY6ZFCGg7c6lfv7OhVgL32ntaPzbmNJoHC+ejltj0ZN0649ByRxAEo2Nyf2GoM2QmeBuUdO1gnPzT5PVbjqE2Iq60lfWDVs65vZx/MMIgX/6bBMX97Ck5N5tAWLDYCK3d2ad5QcweXb5W/ANA="
     - secure: "XdQnTpfB1jUoN6ps6ENHzXhH7u7CcE1I244kyVlEJ9hF5KK0MiuOmO1fomAkfyRPaztXZsYHCfHCBGCA3S35kDrSVzlaDKRuNI796nZsI8pw/xMcf5czFXU210NReDexTTgi+LIs7ktjFHwrSp3GeBoXToSEuGgnU5As0/FLh47g4HsEKETqfxk66PHlvcrlez3qg3A/sZz5IzkDBd58b9eHuGVdtsQTtvWZV320Yv/M0WUByaGIYOAZQ4Rk7IMffbYwOFoPBlvLR0GcHBqKiSUmVn38dP98aMTChdUZ7jgyVfQnIYBB3ZCSX1QiExo7m90ZpyI6ElyL/AaEy4WhVgKKGxuzaLRxj1cQstikH/MvOnJLF+OaQeoDoqPWFPA3hBy10z5b3hsV5ZeiBRdal1J7KqZtZId7yaSKRXqEkjZhjzB2LvbTBFrMtCKP20pj4A/396mSvAxi6W7/SFLL7lzKjkWbakv20NI032s91B0dvNZQtGxFbqoP8gdBoXoTN3H6zR6rwQhVFywVAQ+Bqrvc4QMqOdygWGC03lNQ3WuEVqG2gPu2r9uHUZX/oYI0DsKH91c5KPYkP2cPRv+1Lnc7QnVT/ZItJTfjJy62uvh1DV0MxVtA/us0lIN7tbOgwTxyGvV9j5mUY/d8CMxhTpAagRsLwithrX/H2hqe19U="
-    - ADB_INSTALL_TIMEOUT=16 # minutes (2 minutes by default)
+    - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
 
 branches:
   except:
