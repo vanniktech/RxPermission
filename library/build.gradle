@@ -11,6 +11,8 @@ android {
     minSdkVersion versions.minSdk
     targetSdkVersion versions.targetSdk // Needed for Integration Tests.
 
+    consumerProguardFiles 'proguard-rules.txt'
+
     testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
   }
 
