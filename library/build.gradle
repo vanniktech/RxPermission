@@ -13,6 +13,8 @@ android {
     //noinspection OldTargetApi
     targetSdkVersion 23 // Needed for Integration Tests.
 
+    consumerProguardFiles 'proguard-rules.txt'
+
     testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
   }
 

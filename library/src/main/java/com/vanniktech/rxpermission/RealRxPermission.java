@@ -124,7 +124,7 @@ public final class RealRxPermission implements RxPermission {
     }
 
     if (!unrequestedPermissions.isEmpty()) {
-      final String[] permissionsToRequest = unrequestedPermissions.toArray(new String[unrequestedPermissions.size()]);
+      final String[] permissionsToRequest = unrequestedPermissions.toArray(new String[0]);
       startShadowActivity(permissionsToRequest);
     }
 

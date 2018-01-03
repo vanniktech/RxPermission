@@ -50,7 +50,7 @@ buildscript {
 
   dependencies {
     classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.8.0'
-    classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.10.0'
+    classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.11.0'
 
     classpath 'com.android.tools.build:gradle:3.0.0'
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
@@ -59,16 +59,16 @@ buildscript {
 
 codeQualityTools {
   checkstyle {
-    toolVersion = '8.4'
+    toolVersion = '8.6'
   }
   pmd {
-    toolVersion = '5.8.1'
+    toolVersion = '6.0.0'
   }
   detekt {
-    toolVersion = '1.0.0.RC5-3'
+    toolVersion = '1.0.0.RC6'
   }
   ktlint {
-    toolVersion = '0.12.0'
+    toolVersion = '0.14.0'
   }
   errorProne {
     toolVersion = '2.1.2'
@@ -92,6 +92,6 @@ subprojects {
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '4.3'
+  gradleVersion = '4.4'
   distributionType = Wrapper.DistributionType.ALL
 }
