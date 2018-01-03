@@ -34,19 +34,19 @@ import static com.vanniktech.rxpermission.PermissionActivity.VIEW_ID_WRITE;
     roboter = new Roboter();
   }
 
-  @Test(timeout = 5000) public void cameraDenied() throws UiObjectNotFoundException {
+  @Test public void cameraDenied() throws UiObjectNotFoundException {
     roboter.requestCameraPermission()
         .clickOnDeny()
         .assertPermissionState(DENIED);
   }
 
-  @Test(timeout = 5000) public void locationGranted() throws UiObjectNotFoundException {
+  @Test public void locationGranted() throws UiObjectNotFoundException {
     roboter.requestLocationPermission()
         .clickOnAllow()
         .assertPermissionState(GRANTED);
   }
 
-  @Test(timeout = 5000) public void writeDeniedNotShown() throws UiObjectNotFoundException {
+  @Test public void writeDeniedNotShown() throws UiObjectNotFoundException {
     roboter.requestWritePermission()
         .clickOnDeny()
         .requestWritePermission()
