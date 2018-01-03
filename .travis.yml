@@ -13,7 +13,7 @@ before_install:
   # Install the system image
   - sdkmanager "system-images;android-24;google_apis;armeabi-v7a"
   # Create and start emulator for the script. Meant to race the install task.
-  - echo no | avdmanager create avd -n acib -k "system-images;android-24;google_apis;armeabi-v7a -f --abi "armeabi-v7a" --tag "google_apis"
+  - echo no | avdmanager create avd -n acib -k "system-images;android-24;google_apis;armeabi-v7a" -f --abi "armeabi-v7a" --tag "google_apis"
   - $ANDROID_HOME/emulator/emulator -avd acib -engine classic -no-window -no-boot-anim -noaudio -camera-back none -camera-front none -verbose -qemu -m 512 &
 
 install: ./gradlew clean assemble assembleAndroidTest --stacktrace
