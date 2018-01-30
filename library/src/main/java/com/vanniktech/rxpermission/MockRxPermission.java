@@ -18,7 +18,9 @@ public final class MockRxPermission implements RxPermission {
     this.permissions = permissions;
   }
 
-  @NonNull @Override public Single<Permission> request(@NonNull final String permission) {
+  @NonNull @Override
+  @SuppressWarnings("PMD.GuardLogStatement") // False positive - https://github.com/pmd/pmd/issues/869
+  public Single<Permission> request(@NonNull final String permission) {
     if (permission == null) {
       throw new IllegalArgumentException("permission == null");
     }
