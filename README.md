@@ -110,10 +110,6 @@ Permission.revokedByPolicy(Manifest.permission.CAMERA)
 
 Also checkout the sample app that shows you how to use the library.
 
-# Proguard
-
-No configuration needed.
-
 # License
 
 Copyright (C) 2017 Vanniktech - Niklas Baudy
