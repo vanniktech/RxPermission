@@ -19,14 +19,14 @@ before_install:
 install: ./gradlew clean assemble assembleAndroidTest --stacktrace
 
 before_script:
-  - android-wait-for-emulator
+  - travis_wait 30 android-wait-for-emulator
   - adb shell settings put global window_animation_scale 0 &
   - adb shell settings put global transition_animation_scale 0 &
   - adb shell settings put global animator_duration_scale 0 &
   - sleep 30
   - adb shell input keyevent 82 &
 
-script: travis_wait 30 ./gradlew check connectedCheck --stacktrace
+script: ./gradlew check connectedCheck --stacktrace
 
 after_success:
   - .buildscript/deploy_snapshot.sh
