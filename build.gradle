@@ -46,29 +46,30 @@ buildscript {
     mavenCentral()
     jcenter()
     google()
+    gradlePluginPortal()
   }
 
   dependencies {
-    classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.8.0'
+    classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.9.0'
     classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.11.0'
 
-    classpath 'com.android.tools.build:gradle:3.0.0'
+    classpath 'com.android.tools.build:gradle:3.0.1'
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
   }
 }
 
 codeQualityTools {
   checkstyle {
-    toolVersion = '8.6'
+    toolVersion = '8.7'
   }
   pmd {
-    toolVersion = '6.0.0'
+    toolVersion = '6.0.1'
   }
   detekt {
-    toolVersion = '1.0.0.RC6'
+    toolVersion = '1.0.0.RC6-2'
   }
   ktlint {
-    toolVersion = '0.14.0'
+    toolVersion = '0.15.0'
   }
   errorProne {
     toolVersion = '2.1.2'
@@ -92,6 +93,6 @@ subprojects {
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '4.4'
+  gradleVersion = '4.5'
   distributionType = Wrapper.DistributionType.ALL
 }
