@@ -16,7 +16,9 @@ before_install:
   - echo no | avdmanager create avd -n acib -k "system-images;android-24;google_apis;armeabi-v7a" -f --abi "armeabi-v7a" --tag "google_apis"
   - $ANDROID_HOME/emulator/emulator -avd acib -engine classic -no-boot-anim -noaudio -camera-back none -camera-front none -verbose -qemu -m 512 &
 
-install: ./gradlew clean assemble assembleAndroidTest --stacktrace
+install:
+  - travis_wait 30 mvn install
+  - ./gradlew clean assemble assembleAndroidTest --stacktrace
 
 before_script:
   - android-wait-for-emulator
