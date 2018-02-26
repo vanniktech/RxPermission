@@ -9,7 +9,9 @@ android {
 
   defaultConfig {
     minSdkVersion versions.minSdk
-    targetSdkVersion versions.targetSdk // Needed for Integration Tests.
+
+    //noinspection OldTargetApi
+    targetSdkVersion 23 // Needed for Integration Tests.
 
     consumerProguardFiles 'proguard-rules.txt'
 
