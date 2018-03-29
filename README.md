@@ -1,10 +1,6 @@
 RxPermission
 ============
 
-[![Build Status](https://travis-ci.org/vanniktech/RxPermission.svg?branch=master)](https://travis-ci.org/vanniktech/RxPermission?branch=master)
-[![Codecov](https://codecov.io/github/vanniktech/RxPermission/coverage.svg?branch=master)](https://codecov.io/github/vanniktech/RxPermission?branch=master)
-[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
-
 This library wraps the Android Runtime Permissions with RxJava 2. It's based on the [RxPermissions](https://github.com/tbruyelle/RxPermissions) library and was adjusted with simplicity in mind. Here are a few things that are different:
 
 - API is really small and focused
