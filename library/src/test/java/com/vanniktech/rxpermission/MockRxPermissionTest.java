@@ -87,7 +87,7 @@ public final class MockRxPermissionTest {
   @Test public void requestEachNull() {
     expectedException.expect(IllegalArgumentException.class);
     expectedException.expectMessage("permissions are null or empty");
-    new MockRxPermission(cameraGranted).requestEach(null);
+    new MockRxPermission(cameraGranted).requestEach((String[]) null);
   }
 
   @Test public void requestEachNothingPreConfigured() {
