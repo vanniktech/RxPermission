@@ -3,13 +3,12 @@ package com.vanniktech.rxpermission;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Application;
-import android.support.annotation.CheckResult;
-import android.support.annotation.NonNull;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
 import io.reactivex.Single;
 import io.reactivex.annotations.CheckReturnValue;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 import io.reactivex.subjects.PublishSubject;
 import java.util.ArrayList;
@@ -136,7 +135,7 @@ public final class RealRxPermission implements RxPermission {
    * <p>
    * Always true if SDK &lt; 23.
    */
-  @Override @CheckResult public boolean isGranted(@NonNull final String permission) {
+  @Override @CheckReturnValue public boolean isGranted(@NonNull final String permission) {
     return !isMarshmallow() || isGrantedOnM(permission);
   }
 
@@ -145,7 +144,7 @@ public final class RealRxPermission implements RxPermission {
    * <p>
    * Always false if SDK &lt; 23.
    */
-  @Override @CheckResult public boolean isRevokedByPolicy(@NonNull final String permission) {
+  @Override @CheckReturnValue public boolean isRevokedByPolicy(@NonNull final String permission) {
     return isMarshmallow() && isRevokedOnM(permission);
   }
 

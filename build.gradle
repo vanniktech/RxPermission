@@ -21,7 +21,6 @@ buildscript {
       'runtime': 'com.jakewharton.auto.value:auto-value-annotations:1.5',
     ],
     'support': [
-      'annotations': "com.android.support:support-annotations:${versions.supportLibrary}",
       'appCompat': "com.android.support:appcompat-v7:${versions.supportLibrary}",
 
       'test': [
