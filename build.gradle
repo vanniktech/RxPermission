@@ -14,7 +14,7 @@ buildscript {
 
   ext.deps = [
     'rx': [
-      'java': 'io.reactivex.rxjava2:rxjava:2.1.6',
+      'java': 'io.reactivex.rxjava2:rxjava:2.1.12',
     ],
     'autoValue': [
       'compiler': 'com.google.auto.value:auto-value:1.5.2',
