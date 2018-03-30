@@ -10,6 +10,7 @@ buildscript {
     supportLibrary: '27.0.1',
     espresso: '3.0.1',
     testRules: '1.0.1',
+    autoValue: '1.6',
   ]
 
   ext.deps = [
@@ -17,8 +18,8 @@ buildscript {
       'java': 'io.reactivex.rxjava2:rxjava:2.1.6',
     ],
     'autoValue': [
-      'compiler': 'com.google.auto.value:auto-value:1.5.2',
-      'runtime': 'com.jakewharton.auto.value:auto-value-annotations:1.5',
+      'compiler': "com.google.auto.value:auto-value:${versions.autoValue}",
+      'runtime': "com.google.auto.value:auto-value-annotations:${versions.autoValue}",
     ],
     'support': [
       'annotations': "com.android.support:support-annotations:${versions.supportLibrary}",
