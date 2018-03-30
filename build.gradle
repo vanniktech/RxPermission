@@ -73,7 +73,7 @@ codeQualityTools {
     toolVersion = '0.19.0'
   }
   errorProne {
-    toolVersion = '2.1.2'
+    toolVersion = '2.2.0'
   }
   lint {
     textReport = true
