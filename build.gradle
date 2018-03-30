@@ -22,7 +22,6 @@ buildscript {
       'runtime': "com.google.auto.value:auto-value-annotations:${versions.autoValue}",
     ],
     'support': [
-      'annotations': "com.android.support:support-annotations:${versions.supportLibrary}",
       'appCompat': "com.android.support:appcompat-v7:${versions.supportLibrary}",
 
       'test': [

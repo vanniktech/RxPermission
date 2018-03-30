@@ -24,7 +24,6 @@ android {
 
 dependencies {
   api deps.rx.java
-  api deps.support.annotations
 
   compileOnly deps.autoValue.runtime
   annotationProcessor deps.autoValue.compiler

@@ -1,8 +1,8 @@
 package com.vanniktech.rxpermission;
 
-import android.support.annotation.CheckResult;
-import android.support.annotation.NonNull;
 import com.google.auto.value.AutoValue;
+import io.reactivex.annotations.CheckReturnValue;
+import io.reactivex.annotations.NonNull;
 
 import static com.vanniktech.rxpermission.Permission.State.DENIED;
 import static com.vanniktech.rxpermission.Permission.State.DENIED_NOT_SHOWN;
@@ -10,19 +10,19 @@ import static com.vanniktech.rxpermission.Permission.State.GRANTED;
 import static com.vanniktech.rxpermission.Permission.State.REVOKED_BY_POLICY;
 
 @AutoValue public abstract class Permission {
-  @CheckResult public static Permission granted(final String name) {
+  @CheckReturnValue public static Permission granted(final String name) {
     return new AutoValue_Permission(name, GRANTED);
   }
 
-  @CheckResult public static Permission denied(final String name) {
+  @CheckReturnValue public static Permission denied(final String name) {
     return new AutoValue_Permission(name, DENIED);
   }
 
-  @CheckResult public static Permission deniedNotShown(final String name) {
+  @CheckReturnValue public static Permission deniedNotShown(final String name) {
     return new AutoValue_Permission(name, DENIED_NOT_SHOWN);
   }
 
-  @CheckResult public static Permission revokedByPolicy(final String name) {
+  @CheckReturnValue public static Permission revokedByPolicy(final String name) {
     return new AutoValue_Permission(name, REVOKED_BY_POLICY);
   }
 

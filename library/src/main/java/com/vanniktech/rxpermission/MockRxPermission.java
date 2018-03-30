@@ -1,10 +1,10 @@
 package com.vanniktech.rxpermission;
 
-import android.support.annotation.CheckResult;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import io.reactivex.Observable;
 import io.reactivex.Single;
+import io.reactivex.annotations.CheckReturnValue;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.annotations.Nullable;
 import io.reactivex.functions.Function;
 
 import static com.vanniktech.rxpermission.Permission.State.GRANTED;
@@ -48,12 +48,12 @@ public final class MockRxPermission implements RxPermission {
         });
   }
 
-  @Override @CheckResult public boolean isGranted(@NonNull final String permission) {
+  @Override @CheckReturnValue public boolean isGranted(@NonNull final String permission) {
     final Permission p = get(permission);
     return p != null && p.state() == GRANTED;
   }
 
-  @Override @CheckResult public boolean isRevokedByPolicy(@NonNull final String permission) {
+  @Override @CheckReturnValue public boolean isRevokedByPolicy(@NonNull final String permission) {
     final Permission p = get(permission);
     return p != null && p.state() == REVOKED_BY_POLICY;
   }
