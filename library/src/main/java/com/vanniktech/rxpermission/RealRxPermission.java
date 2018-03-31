@@ -1,6 +1,5 @@
 package com.vanniktech.rxpermission;
 
-import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Application;
 import io.reactivex.Observable;
@@ -23,7 +22,7 @@ import static com.vanniktech.rxpermission.Utils.checkPermissions;
 
 public final class RealRxPermission implements RxPermission {
   static final Object TRIGGER = new Object();
-  /** False positive of Lint */ @SuppressLint("StaticFieldLeak") static RealRxPermission instance;
+  static RealRxPermission instance;
 
   public static RealRxPermission getInstance(final Application application) {
     synchronized (RealRxPermission.class) {
