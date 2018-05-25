@@ -38,4 +38,4 @@ dependencies {
   androidTestImplementation deps.support.test.uiautomator
 }
 
-apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
+apply plugin: "com.vanniktech.maven.publish"
