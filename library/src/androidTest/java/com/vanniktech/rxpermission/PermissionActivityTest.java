@@ -93,9 +93,8 @@ import static com.vanniktech.rxpermission.PermissionActivity.VIEW_ID_WRITE;
       return this;
     }
 
-    Roboter assertPermissionState(final Permission.State state) throws UiObjectNotFoundException {
+    void assertPermissionState(final Permission.State state) {
       onView(withId(VIEW_ID_TEXT)).check(matches(withText(state.toString())));
-      return this;
     }
 
     private static UiObject getButton(final String text) {

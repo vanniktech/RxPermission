@@ -7,15 +7,15 @@ buildscript {
     minSdk: 15,
     compileSdk: 27,
     targetSdk: 27,
-    supportLibrary: '27.0.1',
-    espresso: '3.0.1',
-    testRules: '1.0.1',
+    supportLibrary: '27.1.1',
+    espresso: '3.0.2',
+    testRules: '1.0.2',
     autoValue: '1.6',
   ]
 
   ext.deps = [
     'rx': [
-      'java': 'io.reactivex.rxjava2:rxjava:2.1.12',
+      'java': 'io.reactivex.rxjava2:rxjava:2.1.14',
     ],
     'autoValue': [
       'compiler': "com.google.auto.value:auto-value:${versions.autoValue}",
@@ -36,9 +36,9 @@ buildscript {
       ],
     ],
     'test': [
-      'mockito': 'org.mockito:mockito-core:2.17.0',
+      'mockito': 'org.mockito:mockito-core:2.18.3',
       'junit': 'junit:junit:4.12',
-      'assertj3': 'org.assertj:assertj-core:3.9.1',
+      'assertj3': 'org.assertj:assertj-core:3.10.0',
     ],
   ]
 
@@ -51,9 +51,9 @@ buildscript {
   dependencies {
     classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.10.0'
     classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.11.0'
-    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.1.0'
+    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.2.0'
 
-    classpath 'com.android.tools.build:gradle:3.1.0'
+    classpath 'com.android.tools.build:gradle:3.1.2'
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
   }
 }
@@ -66,7 +66,7 @@ codeQualityTools {
     toolVersion = '6.0.1'
   }
   errorProne {
-    toolVersion = '2.2.0'
+    toolVersion = '2.3.1'
   }
   lint {
     textReport = true
@@ -81,12 +81,9 @@ subprojects {
     google()
     jcenter()
   }
-
-  group = GROUP
-  version = VERSION_NAME
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '4.5'
+  gradleVersion = '4.7'
   distributionType = Wrapper.DistributionType.ALL
 }

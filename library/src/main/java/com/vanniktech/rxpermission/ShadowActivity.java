@@ -15,9 +15,9 @@ import static android.os.Build.VERSION_CODES.M;
   private static final int REQUEST_CODE = 42;
 
   static void start(final Context context, final String[] permissions) {
-    final Intent intent = new Intent(context, ShadowActivity.class);
-    intent.putExtra(ARG_PERMISSIONS, permissions);
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    final Intent intent = new Intent(context, ShadowActivity.class)
+        .putExtra(ARG_PERMISSIONS, permissions)
+        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     context.startActivity(intent);
   }
 
