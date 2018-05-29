@@ -11,6 +11,10 @@ import static com.vanniktech.rxpermission.Permission.State.GRANTED;
 import static com.vanniktech.rxpermission.Permission.State.REVOKED_BY_POLICY;
 import static com.vanniktech.rxpermission.Utils.checkPermissions;
 
+/**
+ * Mocking class that can be used for unit testing.
+ * The passed in stubs from the constructor will be used in each of the methods.
+ */
 public final class MockRxPermission implements RxPermission {
   private final Permission[] permissions;
 

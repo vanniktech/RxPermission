@@ -20,10 +20,17 @@ import static android.os.Build.VERSION.SDK_INT;
 import static android.os.Build.VERSION_CODES.M;
 import static com.vanniktech.rxpermission.Utils.checkPermissions;
 
+/**
+ * Real implementation of RxPermission that will show the usual Android dialog when requesting for permissions.
+ */
 public final class RealRxPermission implements RxPermission {
   static final Object TRIGGER = new Object();
   static RealRxPermission instance;
 
+  /**
+   * @param application your android application
+   * @return a Singleton instance of this class
+   */
   public static RealRxPermission getInstance(final Application application) {
     synchronized (RealRxPermission.class) {
       if (instance == null) {
@@ -44,7 +51,7 @@ public final class RealRxPermission implements RxPermission {
   }
 
   /**
-   * Request permissions immediately, <b>must be invoked during initialization phase of your application</b>.
+   * Requests permissions immediately, <b>must be invoked during initialization phase of your application</b>.
    */
   @Override @NonNull @CheckReturnValue public Observable<Permission> requestEach(@NonNull final String... permissions) {
     return Observable.just(TRIGGER)
@@ -52,7 +59,7 @@ public final class RealRxPermission implements RxPermission {
   }
 
   /**
-   * Request the permission immediately, <b>must be invoked during initialization phase of your application</b>.
+   * Requests the permission immediately, <b>must be invoked during initialization phase of your application</b>.
    */
   @Override @NonNull public Single<Permission> request(@NonNull final String permission) {
     return requestEach(permission)
@@ -79,7 +86,7 @@ public final class RealRxPermission implements RxPermission {
   @NonNull @CheckReturnValue @SuppressWarnings("checkstyle:overloadmethodsdeclarationorder") Observable<Permission> request(final Observable<?> trigger, @NonNull final String... permissions) {
     return Observable.merge(trigger, pending(permissions))
         .flatMap(new Function<Object, Observable<Permission>>() {
-          @Override @NonNull @CheckReturnValue public Observable<Permission> apply(final Object o) throws Exception { // NOPMD
+          @Override @NonNull @CheckReturnValue public Observable<Permission> apply(final Object o) {
             return requestOnM(permissions);
           }
         });

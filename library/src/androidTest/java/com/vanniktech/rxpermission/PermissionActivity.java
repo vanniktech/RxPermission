@@ -27,7 +27,7 @@ public final class PermissionActivity extends Activity implements BiConsumer<Per
   RxPermission rxPermission;
   private TextView textView;
 
-  @Override @SuppressWarnings("ResourceType") @SuppressLint({ "SetTextI18n", "ResourceType" }) protected void onCreate(@Nullable final Bundle savedInstanceState) {
+  @Override @SuppressLint({ "SetTextI18n", "ResourceType" }) protected void onCreate(@Nullable final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     rxPermission = RealRxPermission.getInstance(getApplication());
@@ -82,7 +82,7 @@ public final class PermissionActivity extends Activity implements BiConsumer<Per
     super.onDestroy();
   }
 
-  @Override public void accept(final Permission permission, final Throwable throwable) throws Exception { // NOPMD
+  @Override public void accept(final Permission permission, final Throwable throwable) {
     if (throwable != null) {
       throw new RuntimeException();
     }

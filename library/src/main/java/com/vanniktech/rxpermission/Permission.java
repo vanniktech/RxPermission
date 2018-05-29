@@ -10,18 +10,22 @@ import static com.vanniktech.rxpermission.Permission.State.GRANTED;
 import static com.vanniktech.rxpermission.Permission.State.REVOKED_BY_POLICY;
 
 @AutoValue public abstract class Permission {
+  /** This will create a granted Camera Permission. */
   @CheckReturnValue public static Permission granted(final String name) {
     return new AutoValue_Permission(name, GRANTED);
   }
 
+  /** This will create a denied Camera Permission. */
   @CheckReturnValue public static Permission denied(final String name) {
     return new AutoValue_Permission(name, DENIED);
   }
 
+  /** This will create a denied not shown Camera Permission. */
   @CheckReturnValue public static Permission deniedNotShown(final String name) {
     return new AutoValue_Permission(name, DENIED_NOT_SHOWN);
   }
 
+  /** This will create a policy revoked Camera Permission. */
   @CheckReturnValue public static Permission revokedByPolicy(final String name) {
     return new AutoValue_Permission(name, REVOKED_BY_POLICY);
   }
