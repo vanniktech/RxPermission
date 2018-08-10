@@ -2,6 +2,7 @@ package com.vanniktech.rxpermission;
 
 import android.annotation.TargetApi;
 import android.app.Application;
+import android.content.Context;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
@@ -28,13 +29,13 @@ public final class RealRxPermission implements RxPermission {
   static RealRxPermission instance;
 
   /**
-   * @param application your android application
+   * @param context any context
    * @return a Singleton instance of this class
    */
-  public static RealRxPermission getInstance(final Application application) {
+  public static RealRxPermission getInstance(final Context context) {
     synchronized (RealRxPermission.class) {
       if (instance == null) {
-        instance = new RealRxPermission(application);
+        instance = new RealRxPermission((Application) context.getApplicationContext());
       }
     }
 
