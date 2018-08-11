@@ -53,9 +53,9 @@ import static android.os.Build.VERSION_CODES.M;
   }
 
   @Override public void finish() {
+    super.finish();
     // Reset the animation to avoid flickering.
     overridePendingTransition(0, 0);
-    super.finish();
   }
 
   @Override protected void onSaveInstanceState(final Bundle outState) {
