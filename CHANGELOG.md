@@ -1,7 +1,18 @@
 # Change Log
 
-Version 0.4.0 *(In development)*
---------------------------------
+Version 0.4.0 *(2018-08-18)*
+----------------------------
+
+- Accept a Context rather than Application in RealRxPermission\#getInstance\(\) [\#49](https://github.com/vanniktech/RxPermission/pull/49) ([vanniktech](https://github.com/vanniktech))
+- Update various dependencies. [\#48](https://github.com/vanniktech/RxPermission/pull/48) ([vanniktech](https://github.com/vanniktech))
+- Finish before overriding pending transitions. [\#46](https://github.com/vanniktech/RxPermission/pull/46) ([hannesstruss](https://github.com/hannesstruss))
+- Improve testing setup. [\#43](https://github.com/vanniktech/RxPermission/pull/43) ([vanniktech](https://github.com/vanniktech))
+- Do not run clean build again when deploying snapshots. [\#42](https://github.com/vanniktech/RxPermission/pull/42) ([vanniktech](https://github.com/vanniktech))
+- Use Gradle Maven Publish Plugin for publishing. [\#41](https://github.com/vanniktech/RxPermission/pull/41) ([vanniktech](https://github.com/vanniktech))
+- Fix ErrorProne warning in tests. [\#38](https://github.com/vanniktech/RxPermission/pull/38) ([vanniktech](https://github.com/vanniktech))
+- Drop support annotations in favor of RxJava annotations. [\#37](https://github.com/vanniktech/RxPermission/pull/37) ([vanniktech](https://github.com/vanniktech))
+- Nuke badges in README. [\#29](https://github.com/vanniktech/RxPermission/pull/29) ([vanniktech](https://github.com/vanniktech))
+- Tweak Travis configuration. [\#27](https://github.com/vanniktech/RxPermission/pull/27) ([vanniktech](https://github.com/vanniktech))
 
 Version 0.3.0 *(2018-02-4)*
 ---------------------------
