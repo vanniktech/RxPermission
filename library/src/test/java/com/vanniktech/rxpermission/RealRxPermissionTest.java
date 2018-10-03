@@ -252,7 +252,6 @@ import static org.mockito.quality.Strictness.WARN;
     rxPermission.onRequestPermissionsResult(result, TRUE_ARRAY_2, TRUE_ARRAY_2, READ_PHONE_STATE, CAMERA);
 
     o.assertResult(false);
-
   }
 
   @Test @TargetApi(M) public void requestEachSeveralPermissionsAllAlreadyAccepted() {
