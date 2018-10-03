@@ -140,6 +140,19 @@ public final class MockRxPermissionTest {
         .test()
         .assertResult(callPhoneGranted, cameraGranted);
   }
+  @Test public void requestEachSeveralPermissionsAllAccepted() {
+    new MockRxPermission(callPhoneGranted, cameraGranted)
+            .requestEachToSingle(CALL_PHONE, CAMERA)
+            .test()
+            .assertResult(true);
+  }
+
+  @Test public void requestEachSeveralPermissionsIfOneIsNotAccepted() {
+    new MockRxPermission(callPhoneGranted, cameraDenied)
+            .requestEachToSingle(CALL_PHONE, CAMERA)
+            .test()
+            .assertResult(false);
+  }
 
   @Test public void isGranted() {
     assertThat(new MockRxPermission().isGranted(CAMERA)).isFalse();

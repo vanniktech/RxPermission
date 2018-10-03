@@ -34,6 +34,7 @@ import static org.mockito.quality.Strictness.WARN;
   private static final boolean[] FALSE_ARRAY = { false };
   private static final boolean[] FALSE_ARRAY_2 = { false, false };
   private static final boolean[] TRUE_ARRAY = { true };
+  private static final boolean[] TRUE_ARRAY_2 = { true, true };
 
   private static int[] permissionGranted() {
     return new int[] { PERMISSION_GRANTED };
@@ -223,6 +224,46 @@ import static org.mockito.quality.Strictness.WARN;
     rxPermission.onRequestPermissionsResult(permissionGranted(), FALSE_ARRAY, FALSE_ARRAY, READ_PHONE_STATE);
 
     o.assertResult(Permission.granted(READ_PHONE_STATE), Permission.revokedByPolicy(CAMERA));
+  }
+
+  @Test @TargetApi(M) public void requestEachSeveralPermissionsAllAccepted() {
+    final String[] permissions = { READ_PHONE_STATE, CAMERA };
+    doReturn(false).when(rxPermission).isGranted(READ_PHONE_STATE);
+    doReturn(false).when(rxPermission).isGranted(CAMERA);
+    final int[] result = { PERMISSION_GRANTED, PERMISSION_GRANTED };
+
+    final TestObserver<Boolean> o = rxPermission.requestEachToSingle(permissions)
+            .test();
+
+    rxPermission.onRequestPermissionsResult(result, TRUE_ARRAY_2, TRUE_ARRAY_2, READ_PHONE_STATE, CAMERA);
+
+    o.assertResult(true);
+  }
+
+  @Test @TargetApi(M) public void requestEachSeveralPermissionsIfOneIsNotAccepted() {
+    final String[] permissions = { READ_PHONE_STATE, CAMERA };
+    doReturn(false).when(rxPermission).isGranted(READ_PHONE_STATE);
+    doReturn(false).when(rxPermission).isGranted(CAMERA);
+    final int[] result = { PERMISSION_DENIED, PERMISSION_GRANTED };
+
+    final TestObserver<Boolean> o = rxPermission.requestEachToSingle(permissions)
+            .test();
+
+    rxPermission.onRequestPermissionsResult(result, TRUE_ARRAY_2, TRUE_ARRAY_2, READ_PHONE_STATE, CAMERA);
+
+    o.assertResult(false);
+
+  }
+
+  @Test @TargetApi(M) public void requestEachSeveralPermissionsAllAlreadyAccepted() {
+    final String[] permissions = { READ_PHONE_STATE, CAMERA };
+    doReturn(true).when(rxPermission).isGranted(READ_PHONE_STATE);
+    doReturn(true).when(rxPermission).isGranted(CAMERA);
+
+    final TestObserver<Boolean> o = rxPermission.requestEachToSingle(permissions)
+            .test();
+
+    o.assertResult(true);
   }
 
   @Test public void isGrantedPreMarshmallow() {

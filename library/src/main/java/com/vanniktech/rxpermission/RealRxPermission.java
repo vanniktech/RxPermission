@@ -59,6 +59,24 @@ public final class RealRxPermission implements RxPermission {
         .compose(ensureEach(permissions));
   }
 
+  @Override @NonNull @CheckReturnValue public Single<Boolean> requestEachToSingle(String... permissions) {
+    return Observable.just(TRIGGER)
+            .compose(ensureEach(permissions))
+            .toList()
+            .flatMap(new Function<List<Permission>, Single<Boolean>>() {
+              @Override
+              public Single<Boolean> apply(List<Permission> permissions) throws Exception {
+                boolean granted = true;
+                for (Permission perm: permissions) {
+                  if (perm.state() != Permission.State.GRANTED) {
+                    granted = false;
+                  }
+                }
+                return Single.just(granted);
+              }
+            });
+  }
+
   /**
    * Requests the permission immediately, <b>must be invoked during initialization phase of your application</b>.
    */
