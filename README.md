@@ -26,6 +26,9 @@ public interface RxPermission {
   /** Requests multiple permissions. */
   Observable<Permission> requestEach(String... permissions);
 
+  /** Requests multiple permissions and return one result boolean granted for all permissions */
+  Single<Boolean> requestEachToSingle(String... permissions);
+
   /** Returns true when the given permission is granted. */
   boolean isGranted(String permission);
 
