@@ -43,18 +43,8 @@ public class MainActivity extends AppCompatActivity {
     findViewById(R.id.enableCameraAndWriteExternal).setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(final View v) {
         compositeDisposable.add(
-                rxPermission.requestEach(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .toList().flatMap(new Function<List<Permission>, Single<Boolean>>() {
-                  @Override
-                  public Single<Boolean> apply(List<Permission> permissions) throws Exception {
-                    boolean granted = true;
-                    for (Permission perm: permissions) {
-                      if (perm.state() != Permission.State.GRANTED)
-                        granted = false;
-                    }
-                    return Single.just(granted);
-                  }
-                }).subscribe(new Consumer<Boolean>() {
+                rxPermission.requestEachToSingle(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .subscribe(new Consumer<Boolean>() {
                   @Override
                   public void accept(Boolean granted) throws Exception {
                     Toast.makeText(MainActivity.this, granted.toString(), Toast.LENGTH_SHORT).show();
