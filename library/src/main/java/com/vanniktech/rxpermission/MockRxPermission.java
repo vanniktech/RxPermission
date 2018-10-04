@@ -19,7 +19,7 @@ import static com.vanniktech.rxpermission.Utils.checkPermissions;
  */
 public final class MockRxPermission implements RxPermission {
   private final Permission[] permissions;
-  private final String NO_PERMISSION_CONFIGURED = "No permission was pre-configured for ";
+  private static final String NO_PERMISSION_CONFIGURED = "No permission was pre-configured for ";
 
   public MockRxPermission(final Permission... permissions) {
     this.permissions = permissions;

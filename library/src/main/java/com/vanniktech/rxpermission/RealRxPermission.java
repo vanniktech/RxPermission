@@ -59,9 +59,9 @@ public final class RealRxPermission implements RxPermission {
         .compose(ensureEach(permissions));
   }
 
-  @Override @NonNull @CheckReturnValue public Single<Boolean> requestEachToSingle(@NonNull final String... permissions) {
+  @Override @NonNull @CheckReturnValue public Single<Boolean> requestEachToSingle(@NonNull final String... requestPermissions) {
     return Observable.just(TRIGGER)
-            .compose(ensureEach(permissions))
+            .compose(ensureEach(requestPermissions))
             .toList()
             .flatMap(new Function<List<Permission>, Single<Boolean>>() {
               @Override public Single<Boolean> apply(final List<Permission> permissions) throws Exception {
