@@ -10,8 +10,13 @@ import android.widget.Toast;
 import com.vanniktech.rxpermission.Permission;
 import com.vanniktech.rxpermission.RealRxPermission;
 import com.vanniktech.rxpermission.RxPermission;
+
+import java.util.List;
+
+import io.reactivex.Single;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 
 public class MainActivity extends AppCompatActivity {
   RxPermission rxPermission;
@@ -32,6 +37,19 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, granted.toString(), Toast.LENGTH_LONG).show();
               }
             }));
+      }
+    });
+
+    findViewById(R.id.enableCameraAndWriteExternal).setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(final View v) {
+        compositeDisposable.add(
+                rxPermission.requestEachToSingle(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .subscribe(new Consumer<Boolean>() {
+                  @Override
+                  public void accept(Boolean granted) throws Exception {
+                    Toast.makeText(MainActivity.this, granted.toString(), Toast.LENGTH_SHORT).show();
+                  }
+                }));
       }
     });
   }

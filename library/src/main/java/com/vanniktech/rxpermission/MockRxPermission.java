@@ -1,5 +1,7 @@
 package com.vanniktech.rxpermission;
 
+import java.util.List;
+
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.annotations.CheckReturnValue;
@@ -17,6 +19,7 @@ import static com.vanniktech.rxpermission.Utils.checkPermissions;
  */
 public final class MockRxPermission implements RxPermission {
   private final Permission[] permissions;
+  private static final String NO_PERMISSION_CONFIGURED = "No permission was pre-configured for ";
 
   public MockRxPermission(final Permission... permissions) {
     this.permissions = permissions;
@@ -33,7 +36,7 @@ public final class MockRxPermission implements RxPermission {
       return Single.just(p);
     }
 
-    return Single.error(new IllegalStateException("No permission was pre-configured for " + permission));
+    return Single.error(new IllegalStateException(NO_PERMISSION_CONFIGURED + permission));
   }
 
   @Override @NonNull public Observable<Permission> requestEach(@NonNull final String... requestPermissions) {
@@ -47,9 +50,37 @@ public final class MockRxPermission implements RxPermission {
               return p;
             }
 
-            throw new IllegalStateException("No permission was pre-configured for " + permission);
+            throw new IllegalStateException(NO_PERMISSION_CONFIGURED + permission);
           }
         });
+  }
+
+  @Override @NonNull @CheckReturnValue public Single<Boolean> requestEachToSingle(@NonNull final String... requestPermissions) {
+    checkPermissions(requestPermissions);
+    return Observable.fromArray(requestPermissions)
+            .map(new Function<String, Permission>() {
+              @Override public Permission apply(final String resultPermission) throws Exception { // NOPMD
+                final Permission p = get(resultPermission);
+
+                if (p != null) {
+                  return p;
+                }
+
+                throw new IllegalStateException(NO_PERMISSION_CONFIGURED + resultPermission);
+              }
+            })
+            .toList()
+            .flatMap(new Function<List<Permission>, Single<Boolean>>() {
+              @Override public Single<Boolean> apply(final List<Permission> permissions) throws Exception {
+                boolean granted = true;
+                for (Permission perm : permissions) {
+                  if (perm.state() != Permission.State.GRANTED) {
+                    granted = false;
+                  }
+                }
+                return Single.just(granted);
+              }
+            });
   }
 
   @Override @CheckReturnValue public boolean isGranted(@NonNull final String permission) {
