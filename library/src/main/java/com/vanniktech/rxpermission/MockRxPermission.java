@@ -59,14 +59,14 @@ public final class MockRxPermission implements RxPermission {
     checkPermissions(requestPermissions);
     return Observable.fromArray(requestPermissions)
             .map(new Function<String, Permission>() {
-              @Override public Permission apply(final String permission) throws Exception { // NOPMD
-                final Permission p = get(permission);
+              @Override public Permission apply(final String resultPermission) throws Exception { // NOPMD
+                final Permission p = get(resultPermission);
 
                 if (p != null) {
                   return p;
                 }
 
-                throw new IllegalStateException(NO_PERMISSION_CONFIGURED + permission);
+                throw new IllegalStateException(NO_PERMISSION_CONFIGURED + resultPermission);
               }
             })
             .toList()
