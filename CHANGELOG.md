@@ -1,7 +1,9 @@
 # Change Log
 
-Version 0.5.0 *(In development)*
---------------------------------
+Version 0.5.0 *(2018-10-30)*
+----------------------------
+
+- Lower minSdk to 14 [\#54](https://github.com/vanniktech/RxPermission/pull/54) ([tonywis](https://github.com/tonywis))
 
 Version 0.4.0 *(2018-08-18)*
 ----------------------------
