@@ -18,6 +18,8 @@ android {
     testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
   }
 
+  resourcePrefix 'rx_permission_'
+
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_7
     targetCompatibility JavaVersion.VERSION_1_7
