@@ -1,7 +1,9 @@
 # Change Log
 
-Version 0.6.0 *(In development)*
---------------------------------
+Version 0.6.0 *(2018-11-02)*
+----------------------------
+
+- Update dependencies and make Theme transparent especially around the status bar. [\#55](https://github.com/vanniktech/RxPermission/pull/55) ([vanniktech](https://github.com/vanniktech))
 
 Version 0.5.0 *(2018-10-30)*
 ----------------------------
