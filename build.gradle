@@ -10,6 +10,7 @@ buildscript {
     appcompat: '1.0.0',
     espresso: '3.1.0',
     testRules: '1.1.0',
+    junitExt: '1.0.0',
     autoValue: '1.6.2',
   ]
 
@@ -30,7 +31,9 @@ buildscript {
           'web': "androidx.test.espresso:espresso-web:${versions.espresso}",
           'intents': "androidx.test.espresso:espresso-intents:${versions.espresso}",
         ],
+
         'runner': "androidx.test:runner:${versions.testRules}",
+        'runnerExt': "androidx.test.ext:junit:${versions.junitExt}",
         'rules': "androidx.test:rules:${versions.testRules}",
         'uiautomator': 'androidx.test.uiautomator:uiautomator:2.2.0',
       ],
@@ -53,7 +56,7 @@ buildscript {
     classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.13.0'
     classpath 'com.vanniktech:gradle-maven-publish-plugin:0.6.0'
 
-    classpath 'com.android.tools.build:gradle:3.1.2'
+    classpath 'com.android.tools.build:gradle:3.3.0-beta03'
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.20.0'
   }
 }

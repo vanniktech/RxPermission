@@ -6,7 +6,8 @@
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
-  <uses-sdk tools:overrideLibrary="android.support.test.uiautomator.v18"/>
+  <uses-sdk tools:overrideLibrary="androidx.test.uiautomator,android_libs.ub_uiautomator"/>
+
 
   <application tools:ignore="GoogleAppIndexingWarning">
     <activity android:name=".PermissionActivity"/>
