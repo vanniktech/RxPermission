@@ -10,12 +10,11 @@ android {
   defaultConfig {
     minSdkVersion versions.minSdk
 
-    //noinspection OldTargetApi
     targetSdkVersion versions.targetSdk // Needed for Integration Tests.
 
     consumerProguardFiles 'proguard-rules.txt'
 
-    testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+    testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
   }
 
   resourcePrefix 'rx_permission_'
@@ -38,6 +37,7 @@ dependencies {
 
   androidTestImplementation deps.support.test.espresso.core
   androidTestImplementation deps.support.test.runner
+  androidTestImplementation deps.support.test.junitExt
   androidTestImplementation deps.support.test.rules
   androidTestImplementation deps.support.test.uiautomator
 }
