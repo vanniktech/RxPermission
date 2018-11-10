@@ -33,7 +33,7 @@ buildscript {
         ],
 
         'runner': "androidx.test:runner:${versions.testRules}",
-        'runnerExt': "androidx.test.ext:junit:${versions.junitExt}",
+        'junitExt': "androidx.test.ext:junit:${versions.junitExt}",
         'rules': "androidx.test:rules:${versions.testRules}",
         'uiautomator': 'androidx.test.uiautomator:uiautomator:2.2.0',
       ],
@@ -56,7 +56,7 @@ buildscript {
     classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.13.0'
     classpath 'com.vanniktech:gradle-maven-publish-plugin:0.6.0'
 
-    classpath 'com.android.tools.build:gradle:3.3.0-beta03'
+    classpath 'com.android.tools.build:gradle:3.2.1'
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.20.0'
   }
 }

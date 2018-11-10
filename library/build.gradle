@@ -37,7 +37,7 @@ dependencies {
 
   androidTestImplementation deps.support.test.espresso.core
   androidTestImplementation deps.support.test.runner
-  androidTestImplementation deps.support.test.runnerExt
+  androidTestImplementation deps.support.test.junitExt
   androidTestImplementation deps.support.test.rules
   androidTestImplementation deps.support.test.uiautomator
 }
