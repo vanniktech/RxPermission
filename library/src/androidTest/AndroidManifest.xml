@@ -8,7 +8,6 @@
 
   <uses-sdk tools:overrideLibrary="androidx.test.uiautomator,android_libs.ub_uiautomator"/>
 
-
   <application tools:ignore="GoogleAppIndexingWarning">
     <activity android:name=".PermissionActivity"/>
   </application>
