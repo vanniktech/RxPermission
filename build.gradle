@@ -6,24 +6,22 @@ buildscript {
   ext.versions = [
     minSdk: 14,
     compileSdk: 28,
-    targetSdk: 27,
-    appcompat: '1.0.0',
+    targetSdk: 28,
+    autoValue: '1.6.3',
     espresso: '3.1.0',
     testRules: '1.1.0',
-    junitExt: '1.0.0',
-    autoValue: '1.6.2',
   ]
 
   ext.deps = [
     'rx': [
-      'java': 'io.reactivex.rxjava2:rxjava:2.2.3',
+      'java': 'io.reactivex.rxjava2:rxjava:2.2.4',
     ],
     'autoValue': [
       'compiler': "com.google.auto.value:auto-value:${versions.autoValue}",
       'runtime': "com.google.auto.value:auto-value-annotations:${versions.autoValue}",
     ],
     'support': [
-      'appCompat': "androidx.appcompat:appcompat:${versions.appcompat}",
+      'appCompat': "androidx.appcompat:appcompat:1.0.0",
 
       'test': [
         'espresso': [
@@ -33,7 +31,7 @@ buildscript {
         ],
 
         'runner': "androidx.test:runner:${versions.testRules}",
-        'junitExt': "androidx.test.ext:junit:${versions.junitExt}",
+        'junitExt': "androidx.test.ext:junit:1.0.0",
         'rules': "androidx.test:rules:${versions.testRules}",
         'uiautomator': 'androidx.test.uiautomator:uiautomator:2.2.0',
       ],
@@ -52,12 +50,13 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.14.0'
+    classpath 'com.android.tools.build:gradle:3.2.1'
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.20.0'
+
+    classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.15.0'
     classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.13.0'
     classpath 'com.vanniktech:gradle-maven-publish-plugin:0.6.0'
 
-    classpath 'com.android.tools.build:gradle:3.1.2'
-    classpath 'com.github.ben-manes:gradle-versions-plugin:0.20.0'
   }
 }
 
@@ -87,6 +86,6 @@ subprojects {
 }
 
 wrapper {
-  gradleVersion = '4.10.2'
+  gradleVersion = '5.0'
   distributionType = Wrapper.DistributionType.ALL
 }
