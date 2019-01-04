@@ -1,0 +1,34 @@
+version: 2
+
+jobs:
+  build:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/android:api-28
+    steps:
+      - checkout
+      - run:
+          name: install avd
+          command: sdkmanager "system-images;android-19;default;armeabi-v7a"
+      - run:
+          name: Create avd
+          command: echo no | avdmanager create avd -n testEmulator -k "system-images;android-19;default;armeabi-v7a"
+      - run:
+          name: Start emulator
+          command: emulator -avd testEmulator -no-audio -no-window
+          background: true
+      - run:
+          name: Wait for emulator
+          command: chmod +x ./android-wait-for-boot.sh && ./android-wait-for-boot.sh
+      - run:
+          name: Remove lock screen
+          command: adb shell input keyevent 82
+      - run:
+          name: Build
+          command: ./gradlew build
+      - run:
+          name: Unit testing
+          command: ./gradlew test
+      - run:
+          name: Instrumentation testing
+          command: ./gradlew connectedCheck
