@@ -8,13 +8,13 @@ buildscript {
     compileSdk: 28,
     targetSdk: 28,
     autoValue: '1.6.3',
-    espresso: '3.1.0',
-    testRules: '1.1.0',
+    espresso: '3.1.1',
+    testRules: '1.1.1',
   ]
 
   ext.deps = [
     'rx': [
-      'java': 'io.reactivex.rxjava2:rxjava:2.2.4',
+      'java': 'io.reactivex.rxjava2:rxjava:2.2.5',
     ],
     'autoValue': [
       'compiler': "com.google.auto.value:auto-value:${versions.autoValue}",
@@ -30,15 +30,15 @@ buildscript {
           'intents': "androidx.test.espresso:espresso-intents:${versions.espresso}",
         ],
 
+        'junitExt': "androidx.test.ext:junit:1.1.0",
         'runner': "androidx.test:runner:${versions.testRules}",
-        'junitExt': "androidx.test.ext:junit:1.0.0",
         'rules': "androidx.test:rules:${versions.testRules}",
         'uiautomator': 'androidx.test.uiautomator:uiautomator:2.2.0',
       ],
     ],
     'test': [
-      'mockito': 'org.mockito:mockito-core:2.23.0',
-      'junit': 'junit:junit:4.12',
+      'mockito': 'org.mockito:mockito-core:2.23.4',
+      'junit': 'junit:junit:4.13-beta-1',
       'assertj3': 'org.assertj:assertj-core:3.11.1',
     ],
   ]
