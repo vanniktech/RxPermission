@@ -74,7 +74,7 @@ import static com.vanniktech.rxpermission.PermissionActivity.VIEW_ID_WRITE;
     }
 
     Roboter clickOnAllow() throws UiObjectNotFoundException {
-      final UiObject allowPermissions = getButton("ALLOW");
+      final UiObject allowPermissions = getButton("Allow");
 
       if (allowPermissions.exists()) {
         allowPermissions.click();
@@ -84,7 +84,7 @@ import static com.vanniktech.rxpermission.PermissionActivity.VIEW_ID_WRITE;
     }
 
     Roboter clickOnDeny() throws UiObjectNotFoundException {
-      getButton("DENY").click();
+      getButton("Deny").click();
       return this;
     }
 
