@@ -1,7 +1,16 @@
 # Change Log
 
-Version 0.7.0 *(In development)*
---------------------------------
+Version 0.7.0 *(2019-01-06)*
+----------------------------
+
+- Fix Integration tests. [\#63](https://github.com/vanniktech/RxPermission/pull/63) ([vanniktech](https://github.com/vanniktech))
+- Update some dependencies. [\#62](https://github.com/vanniktech/RxPermission/pull/62) ([vanniktech](https://github.com/vanniktech))
+- Update dependencies. [\#59](https://github.com/vanniktech/RxPermission/pull/59) ([vanniktech](https://github.com/vanniktech))
+- Remove sudo: false from travis config. [\#58](https://github.com/vanniktech/RxPermission/pull/58) ([vanniktech](https://github.com/vanniktech))
+- Explicitly disable Jetifier. [\#57](https://github.com/vanniktech/RxPermission/pull/57) ([vanniktech](https://github.com/vanniktech))
+- Migrate to AndroidX [\#56](https://github.com/vanniktech/RxPermission/pull/56) ([ParthPadg](https://github.com/ParthPadg))
+
+Thanks to [ParthPadg](https://github.com/ParthPadg) for the AndroidX migration!
 
 Version 0.6.0 *(2018-11-02)*
 ----------------------------
