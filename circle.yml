@@ -4,7 +4,7 @@ jobs:
   build:
     working_directory: ~/repo
     docker:
-      - image: circleci/android:api-28
+      - image: gengjiawen/android-ndk
     steps:
       - checkout
       - run:
@@ -24,13 +24,5 @@ jobs:
           name: Remove lock screen
           command: adb shell input keyevent 82
       - run:
-          name: Build
-          command: ./gradlew build
-      - run:
-          name: Unit testing
-          command: ./gradlew test
-      - run:
           name: Instrumentation testing
           command: ./gradlew connectedCheck
-      - store_test_results:
-          path: library/build/reports
