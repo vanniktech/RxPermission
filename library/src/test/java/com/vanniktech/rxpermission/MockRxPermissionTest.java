@@ -1,5 +1,6 @@
 package com.vanniktech.rxpermission;
 
+import android.annotation.SuppressLint;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -28,7 +29,7 @@ public final class MockRxPermissionTest {
     cameraRevokedByPolicy = Permission.revokedByPolicy(CAMERA);
   }
 
-  @Test public void requestNull() {
+  @Test @SuppressLint("CheckResult") public void requestNull() {
     expectedException.expect(IllegalArgumentException.class);
     expectedException.expectMessage("permission == null");
     new MockRxPermission(cameraGranted).request(null);
@@ -78,13 +79,13 @@ public final class MockRxPermissionTest {
         .assertResult(cameraRevokedByPolicy);
   }
 
-  @Test public void requestEachEmpty() {
+  @Test @SuppressLint("CheckResult") public void requestEachEmpty() {
     expectedException.expect(IllegalArgumentException.class);
     expectedException.expectMessage("permissions are null or empty");
     new MockRxPermission(cameraGranted).requestEach();
   }
 
-  @Test public void requestEachNull() {
+  @Test @SuppressLint("CheckResult") public void requestEachNull() {
     expectedException.expect(IllegalArgumentException.class);
     expectedException.expectMessage("permissions are null or empty");
     new MockRxPermission(cameraGranted).requestEach((String[]) null);
