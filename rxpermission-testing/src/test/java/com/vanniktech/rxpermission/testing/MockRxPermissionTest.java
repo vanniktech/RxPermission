@@ -1,18 +1,16 @@
-package com.vanniktech.rxpermission;
+package com.vanniktech.rxpermission.testing;
 
 import android.annotation.SuppressLint;
+import com.vanniktech.rxpermission.Permission;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 import static android.Manifest.permission.CALL_PHONE;
 import static android.Manifest.permission.CAMERA;
 import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.junit.Assert.fail;
 
 public final class MockRxPermissionTest {
-  @Rule public final ExpectedException expectedException = ExpectedException.none();
-
   private Permission callPhoneGranted;
 
   private Permission cameraGranted;
@@ -29,10 +27,13 @@ public final class MockRxPermissionTest {
     cameraRevokedByPolicy = Permission.revokedByPolicy(CAMERA);
   }
 
-  @Test @SuppressLint("CheckResult") public void requestNull() {
-    expectedException.expect(IllegalArgumentException.class);
-    expectedException.expectMessage("permission == null");
-    new MockRxPermission(cameraGranted).request(null);
+  @Test @SuppressLint("CheckResult") /* https://issuetracker.google.com/issues/125753102 */ public void requestNull() {
+    try {
+      new MockRxPermission(cameraGranted).request(null);
+      fail();
+    } catch (IllegalArgumentException expected) {
+      assertThat(expected).hasMessage("permission == null");
+    }
   }
 
   @Test public void requestNothingPreConfigured() {
@@ -79,16 +80,22 @@ public final class MockRxPermissionTest {
         .assertResult(cameraRevokedByPolicy);
   }
 
-  @Test @SuppressLint("CheckResult") public void requestEachEmpty() {
-    expectedException.expect(IllegalArgumentException.class);
-    expectedException.expectMessage("permissions are null or empty");
-    new MockRxPermission(cameraGranted).requestEach();
+  @Test @SuppressLint("CheckResult") /* https://issuetracker.google.com/issues/125753102 */ public void requestEachEmpty() {
+    try {
+      new MockRxPermission(cameraGranted).requestEach();
+      fail();
+    } catch (IllegalArgumentException expected) {
+      assertThat(expected).hasMessage("permissions are null or empty");
+    }
   }
 
-  @Test @SuppressLint("CheckResult") public void requestEachNull() {
-    expectedException.expect(IllegalArgumentException.class);
-    expectedException.expectMessage("permissions are null or empty");
-    new MockRxPermission(cameraGranted).requestEach((String[]) null);
+  @Test @SuppressLint("CheckResult") /* https://issuetracker.google.com/issues/125753102 */ public void requestEachNull() {
+    try {
+      new MockRxPermission(cameraGranted).requestEach((String[]) null);
+      fail();
+    } catch (IllegalArgumentException expected) {
+      assertThat(expected).hasMessage("permissions are null or empty");
+    }
   }
 
   @Test public void requestEachNothingPreConfigured() {

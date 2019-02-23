@@ -27,7 +27,7 @@ android {
 }
 
 dependencies {
-  implementation project(':library')
+  implementation project(':rxpermission')
 
   implementation deps.support.appCompat
 }
