@@ -14,7 +14,7 @@ buildscript {
 
   ext.deps = [
     'rx': [
-      'java': 'io.reactivex.rxjava2:rxjava:2.2.5',
+      'java': 'io.reactivex.rxjava2:rxjava:2.2.7',
     ],
     'autoValue': [
       'compiler': "com.google.auto.value:auto-value:${versions.autoValue}",
@@ -37,9 +37,9 @@ buildscript {
       ],
     ],
     'test': [
-      'mockito': 'org.mockito:mockito-core:2.23.4',
-      'junit': 'junit:junit:4.13-beta-1',
-      'assertj3': 'org.assertj:assertj-core:3.11.1',
+      'mockito': 'org.mockito:mockito-core:2.24.5',
+      'junit': 'junit:junit:4.13-beta-2',
+      'assertj3': 'org.assertj:assertj-core:3.12.0',
     ],
   ]
 
@@ -50,12 +50,12 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.2.1'
+    classpath 'com.android.tools.build:gradle:3.3.1'
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.20.0'
 
-    classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.15.0'
-    classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.13.0'
-    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.6.0'
+    classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.17.0'
+    classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.12.0'
+    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.8.0'
 
   }
 }
@@ -86,6 +86,6 @@ subprojects {
 }
 
 wrapper {
-  gradleVersion = '5.0'
+  gradleVersion = '5.2.1'
   distributionType = Wrapper.DistributionType.ALL
 }
