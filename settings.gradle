@@ -1,2 +1,3 @@
-include ':library'
+include ':rxpermission'
+include ':rxpermission-testing'
 include ':sample'

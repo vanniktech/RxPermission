@@ -1,0 +1,31 @@
+apply plugin: 'com.android.library'
+
+afterEvaluate {
+  generateReleaseBuildConfig.enabled = false
+}
+
+android {
+  compileSdkVersion versions.compileSdk
+
+  defaultConfig {
+    minSdkVersion versions.minSdk
+  }
+
+  resourcePrefix 'rx_permission_testing_'
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_7
+    targetCompatibility JavaVersion.VERSION_1_7
+  }
+}
+
+dependencies {
+  api project(":rxpermission")
+}
+
+dependencies {
+  testImplementation deps.test.junit
+  testImplementation deps.test.assertj3
+}
+
+apply plugin: "com.vanniktech.maven.publish"

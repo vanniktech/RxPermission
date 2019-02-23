@@ -1,5 +1,7 @@
-package com.vanniktech.rxpermission;
+package com.vanniktech.rxpermission.testing;
 
+import com.vanniktech.rxpermission.Permission;
+import com.vanniktech.rxpermission.RxPermission;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.annotations.CheckReturnValue;
@@ -9,7 +11,7 @@ import io.reactivex.functions.Function;
 
 import static com.vanniktech.rxpermission.Permission.State.GRANTED;
 import static com.vanniktech.rxpermission.Permission.State.REVOKED_BY_POLICY;
-import static com.vanniktech.rxpermission.Utils.checkPermissions;
+import static com.vanniktech.rxpermission.testing.Utils.checkPermissions;
 
 /**
  * Mocking class that can be used for unit testing.
