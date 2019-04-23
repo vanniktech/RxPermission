@@ -1,5 +1,6 @@
 RxPermission
 ============
+[![Build Status](https://travis-ci.org/vanniktech/RxPermission.svg?branch=master)](https://travis-ci.org/vanniktech/RxPermission)
 
 This library wraps the Android Runtime Permissions with RxJava 2. It's based on the [RxPermissions](https://github.com/tbruyelle/RxPermissions) library and was adjusted with simplicity in mind. Here are a few things that are different:
 
