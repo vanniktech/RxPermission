@@ -39,9 +39,12 @@ import static android.os.Build.VERSION_CODES.M;
 
   private void handleIntent(final Intent intent) {
     final String[] permissions = intent.getStringArrayExtra(ARG_PERMISSIONS);
-    shouldShowRequestPermissionRationale = rationales(permissions);
 
-    requestPermissions(permissions, REQUEST_CODE);
+    if (permissions != null) {
+      shouldShowRequestPermissionRationale = rationales(permissions);
+
+      requestPermissions(permissions, REQUEST_CODE);
+    }
   }
 
   @Override public void onRequestPermissionsResult(final int requestCode, @NonNull final String[] permissions, @NonNull final int[] grantResults) {
