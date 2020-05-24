@@ -12,16 +12,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.BiConsumer;
+import io.reactivex.functions.Consumer;
 
+import static android.Manifest.permission.ACCESS_BACKGROUND_LOCATION;
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
+import static android.Manifest.permission.CALL_PHONE;
 import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public final class PermissionActivity extends Activity implements BiConsumer<Permission, Throwable> {
   static final int VIEW_ID_TEXT = 10;
   static final int VIEW_ID_CAMERA = 11;
-  static final int VIEW_ID_LOCATION = 12;
-  static final int VIEW_ID_WRITE = 13;
+  static final int VIEW_ID_WRITE = 12;
+  static final int VIEW_ID_CALL_PHONE = 13;
+  static final int VIEW_ID_BACKGROUND_LOCATION = 14;
 
   @NonNull final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
@@ -51,16 +55,6 @@ public final class PermissionActivity extends Activity implements BiConsumer<Per
       }
     });
 
-    final Button location = new Button(this);
-    location.setId(VIEW_ID_LOCATION);
-    location.setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(final View v) {
-        compositeDisposable.add(rxPermission
-            .request(ACCESS_COARSE_LOCATION)
-            .subscribe(PermissionActivity.this));
-      }
-    });
-
     final Button write = new Button(this);
     write.setId(VIEW_ID_WRITE);
     write.setOnClickListener(new View.OnClickListener() {
@@ -71,10 +65,39 @@ public final class PermissionActivity extends Activity implements BiConsumer<Per
       }
     });
 
+    final Button callPhone = new Button(this);
+    callPhone.setId(VIEW_ID_CALL_PHONE);
+    callPhone.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(final View v) {
+        compositeDisposable.add(rxPermission
+            .request(CALL_PHONE)
+            .subscribe(PermissionActivity.this));
+      }
+    });
+
+    final Button backgroundLocation = new Button(this);
+    backgroundLocation.setId(VIEW_ID_BACKGROUND_LOCATION);
+    backgroundLocation.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(final View v) {
+        compositeDisposable.add(rxPermission
+            .requestEach(ACCESS_COARSE_LOCATION, ACCESS_BACKGROUND_LOCATION)
+            .subscribe(new Consumer<Permission>() {
+              @Override public void accept(Permission permission) {
+                textView.setText(permission.state().toString());
+              }
+            }, new Consumer<Throwable>() {
+              @Override public void accept(Throwable throwable) {
+                throw new RuntimeException(throwable);
+              }
+            }));
+      }
+    });
+
     linearLayout.addView(textView);
     linearLayout.addView(camera);
-    linearLayout.addView(location);
     linearLayout.addView(write);
+    linearLayout.addView(callPhone);
+    linearLayout.addView(backgroundLocation);
     setContentView(linearLayout);
   }
 
@@ -85,7 +108,7 @@ public final class PermissionActivity extends Activity implements BiConsumer<Per
 
   @Override public void accept(final Permission permission, final Throwable throwable) {
     if (throwable != null) {
-      throw new RuntimeException();
+      throw new RuntimeException(throwable);
     }
 
     textView.setText(permission.state().toString());
