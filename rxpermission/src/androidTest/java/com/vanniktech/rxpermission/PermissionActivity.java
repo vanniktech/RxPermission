@@ -82,11 +82,11 @@ public final class PermissionActivity extends Activity implements BiConsumer<Per
         compositeDisposable.add(rxPermission
             .requestEach(ACCESS_COARSE_LOCATION, ACCESS_BACKGROUND_LOCATION)
             .subscribe(new Consumer<Permission>() {
-              @Override public void accept(Permission permission) {
+              @Override public void accept(final Permission permission) {
                 textView.setText(permission.state().toString());
               }
             }, new Consumer<Throwable>() {
-              @Override public void accept(Throwable throwable) {
+              @Override public void accept(final Throwable throwable) {
                 throw new RuntimeException(throwable);
               }
             }));
