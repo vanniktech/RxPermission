@@ -70,6 +70,9 @@ codeQualityTools {
   errorProne {
     toolVersion = '2.3.1'
   }
+  cpd {
+    enabled = false
+  }
   lint {
     textReport = true
   }
