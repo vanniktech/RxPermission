@@ -1,16 +1,15 @@
 package com.vanniktech.rxpermission;
 
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.uiautomator.UiDevice;
 import androidx.test.uiautomator.UiObject;
 import androidx.test.uiautomator.UiObjectNotFoundException;
 import androidx.test.uiautomator.UiSelector;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -21,8 +20,9 @@ import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentat
 import static com.vanniktech.rxpermission.Permission.State.DENIED;
 import static com.vanniktech.rxpermission.Permission.State.DENIED_NOT_SHOWN;
 import static com.vanniktech.rxpermission.Permission.State.GRANTED;
+import static com.vanniktech.rxpermission.PermissionActivity.VIEW_ID_BACKGROUND_LOCATION;
+import static com.vanniktech.rxpermission.PermissionActivity.VIEW_ID_CALL_PHONE;
 import static com.vanniktech.rxpermission.PermissionActivity.VIEW_ID_CAMERA;
-import static com.vanniktech.rxpermission.PermissionActivity.VIEW_ID_LOCATION;
 import static com.vanniktech.rxpermission.PermissionActivity.VIEW_ID_TEXT;
 import static com.vanniktech.rxpermission.PermissionActivity.VIEW_ID_WRITE;
 
@@ -41,9 +41,15 @@ import static com.vanniktech.rxpermission.PermissionActivity.VIEW_ID_WRITE;
         .assertPermissionState(DENIED);
   }
 
-  @Test public void locationGranted() throws UiObjectNotFoundException {
-    roboter.requestLocationPermission()
+  @Test public void bluetoothGranted() throws UiObjectNotFoundException {
+    roboter.requestCallPhonePermission()
         .clickOnAllow()
+        .assertPermissionState(GRANTED);
+  }
+
+  @Test public void backgroundLocation() throws UiObjectNotFoundException {
+    roboter.requestBackgroundLocationPermission()
+        .clickOnAllowAllTheTime()
         .assertPermissionState(GRANTED);
   }
 
@@ -52,7 +58,6 @@ import static com.vanniktech.rxpermission.PermissionActivity.VIEW_ID_WRITE;
         .clickOnDeny()
         .requestWritePermission()
         .clickOnDoNotShowAgain()
-        .clickOnDeny()
         .requestWritePermission()
         .assertPermissionState(DENIED_NOT_SHOWN);
   }
@@ -63,8 +68,13 @@ import static com.vanniktech.rxpermission.PermissionActivity.VIEW_ID_WRITE;
       return this;
     }
 
-    Roboter requestLocationPermission() {
-      onView(withId(VIEW_ID_LOCATION)).perform(click());
+    Roboter requestCallPhonePermission() {
+      onView(withId(VIEW_ID_CALL_PHONE)).perform(click());
+      return this;
+    }
+
+    Roboter requestBackgroundLocationPermission() {
+      onView(withId(VIEW_ID_BACKGROUND_LOCATION)).perform(click());
       return this;
     }
 
@@ -74,12 +84,12 @@ import static com.vanniktech.rxpermission.PermissionActivity.VIEW_ID_WRITE;
     }
 
     Roboter clickOnAllow() throws UiObjectNotFoundException {
-      final UiObject allowPermissions = getButton("Allow");
+      getButton("Allow").click();
+      return this;
+    }
 
-      if (allowPermissions.exists()) {
-        allowPermissions.click();
-      }
-
+    Roboter clickOnAllowAllTheTime() throws UiObjectNotFoundException {
+      getButton("Allow all the time").click();
       return this;
     }
 
@@ -89,8 +99,7 @@ import static com.vanniktech.rxpermission.PermissionActivity.VIEW_ID_WRITE;
     }
 
     Roboter clickOnDoNotShowAgain() throws UiObjectNotFoundException {
-      final UiObject doNotAskAgain = getButton("Don't ask again");
-      doNotAskAgain.click();
+      getButton("Deny & don’t ask again").click();
       return this;
     }
 
