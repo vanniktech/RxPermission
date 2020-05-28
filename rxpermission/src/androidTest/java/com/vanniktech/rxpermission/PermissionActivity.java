@@ -30,7 +30,7 @@ public final class PermissionActivity extends Activity implements BiConsumer<Per
   @NonNull final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
   RxPermission rxPermission;
-  private TextView textView;
+  TextView textView;
 
   @Override @SuppressLint({ "SetTextI18n", "ResourceType" }) protected void onCreate(@Nullable final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
