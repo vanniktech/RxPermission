@@ -11,7 +11,6 @@ import static android.os.Build.VERSION_CODES.M;
 
 @TargetApi(M) public final class ShadowActivity extends Activity {
   private static final String ARG_PERMISSIONS = "permissions";
-  private static final String SAVE_RATIONALE = "save-rationale";
   private static final int REQUEST_CODE = 42;
 
   static void start(final Context context, final String[] permissions) {
@@ -29,7 +28,8 @@ import static android.os.Build.VERSION_CODES.M;
     if (savedInstanceState == null) {
       handleIntent(getIntent());
     } else {
-      shouldShowRequestPermissionRationale = savedInstanceState.getBooleanArray(SAVE_RATIONALE);
+      RealRxPermission.getInstance(this).cancelPermissionsRequests();
+      finish();
     }
   }
 
@@ -59,11 +59,6 @@ import static android.os.Build.VERSION_CODES.M;
     super.finish();
     // Reset the animation to avoid flickering.
     overridePendingTransition(0, 0);
-  }
-
-  @Override protected void onSaveInstanceState(final Bundle outState) {
-    outState.putBooleanArray(SAVE_RATIONALE, shouldShowRequestPermissionRationale);
-    super.onSaveInstanceState(outState);
   }
 
   private boolean[] rationales(@NonNull final String[] permissions) {
