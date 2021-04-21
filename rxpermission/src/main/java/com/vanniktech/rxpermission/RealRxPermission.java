@@ -196,4 +196,8 @@ public final class RealRxPermission implements RxPermission {
   boolean isMarshmallow() {
     return SDK_INT >= M;
   }
+
+  void cancelPermissionsRequests() {
+    currentPermissionRequests.clear();
+  }
 }
