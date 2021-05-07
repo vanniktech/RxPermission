@@ -50,7 +50,7 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.6.2'
+    classpath 'com.android.tools.build:gradle:4.2.0'
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.28.0'
 
     classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.20.0'
