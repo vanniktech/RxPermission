@@ -3,7 +3,7 @@ package com.vanniktech.rxpermission;
 import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.pm.PackageManager;
-import io.reactivex.observers.TestObserver;
+import io.reactivex.rxjava3.observers.TestObserver;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

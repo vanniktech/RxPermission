@@ -1,8 +1,8 @@
 package com.vanniktech.rxpermission;
 
 import com.google.auto.value.AutoValue;
-import io.reactivex.annotations.CheckReturnValue;
-import io.reactivex.annotations.NonNull;
+import io.reactivex.rxjava3.annotations.CheckReturnValue;
+import io.reactivex.rxjava3.annotations.NonNull;
 
 import static com.vanniktech.rxpermission.Permission.State.DENIED;
 import static com.vanniktech.rxpermission.Permission.State.DENIED_NOT_SHOWN;
