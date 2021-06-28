@@ -1,9 +1,5 @@
 apply plugin: 'com.android.library'
 
-afterEvaluate {
-  generateReleaseBuildConfig.enabled = false
-}
-
 android {
   compileSdkVersion versions.compileSdk
 
@@ -15,6 +11,10 @@ android {
     consumerProguardFiles 'proguard-rules.txt'
 
     testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+  }
+
+  buildFeatures {
+    buildConfig = false
   }
 
   resourcePrefix 'rx_permission_'

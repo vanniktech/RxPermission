@@ -14,14 +14,14 @@ buildscript {
 
   ext.deps = [
     'rx': [
-      'java': 'io.reactivex.rxjava2:rxjava:2.2.7',
+      'java': 'io.reactivex.rxjava2:rxjava:2.2.21',
     ],
     'autoValue': [
       'compiler': "com.google.auto.value:auto-value:${versions.autoValue}",
       'runtime': "com.google.auto.value:auto-value-annotations:${versions.autoValue}",
     ],
     'support': [
-      'appCompat': "androidx.appcompat:appcompat:1.0.0",
+      'appCompat': "androidx.appcompat:appcompat:1.2.0",
 
       'test': [
         'espresso': [
@@ -50,12 +50,12 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.6.2'
-    classpath 'com.github.ben-manes:gradle-versions-plugin:0.28.0'
+    classpath 'com.android.tools.build:gradle:4.2.1'
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.38.0'
 
     classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.20.0'
     classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.16.0'
-    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.8.0'
+    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.16.0'
 
   }
 }
@@ -89,6 +89,6 @@ subprojects {
 }
 
 wrapper {
-  gradleVersion = '6.3'
+  gradleVersion = '6.8.3'
   distributionType = Wrapper.DistributionType.ALL
 }

@@ -32,7 +32,7 @@ public final class PermissionActivity extends Activity implements BiConsumer<Per
   RxPermission rxPermission;
   TextView textView;
 
-  @Override @SuppressLint({ "SetTextI18n", "ResourceType" }) protected void onCreate(@Nullable final Bundle savedInstanceState) {
+  @Override @SuppressLint({ "SetTextI18n", "ResourceType", "InlinedApi" }) protected void onCreate(@Nullable final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     rxPermission = RealRxPermission.getInstance(getApplication());
