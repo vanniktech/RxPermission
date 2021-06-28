@@ -5,7 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import io.reactivex.annotations.NonNull;
+import io.reactivex.rxjava3.annotations.NonNull;
 
 import static android.os.Build.VERSION_CODES.M;
 

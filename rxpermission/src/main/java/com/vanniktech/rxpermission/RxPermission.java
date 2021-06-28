@@ -1,9 +1,9 @@
 package com.vanniktech.rxpermission;
 
-import io.reactivex.Observable;
-import io.reactivex.Single;
-import io.reactivex.annotations.CheckReturnValue;
-import io.reactivex.annotations.NonNull;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.annotations.CheckReturnValue;
+import io.reactivex.rxjava3.annotations.NonNull;
 
 public interface RxPermission {
   /** Requests a single permission. */

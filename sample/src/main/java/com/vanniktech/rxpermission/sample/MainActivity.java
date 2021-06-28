@@ -11,8 +11,8 @@ import com.vanniktech.rxpermission.RxPermission;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Consumer;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity {
   RxPermission rxPermission;

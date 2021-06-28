@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.BiConsumer;
-import io.reactivex.functions.Consumer;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.functions.BiConsumer;
+import io.reactivex.rxjava3.functions.Consumer;
 
 import static android.Manifest.permission.ACCESS_BACKGROUND_LOCATION;
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;

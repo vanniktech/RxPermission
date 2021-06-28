@@ -2,12 +2,12 @@ package com.vanniktech.rxpermission.testing;
 
 import com.vanniktech.rxpermission.Permission;
 import com.vanniktech.rxpermission.RxPermission;
-import io.reactivex.Observable;
-import io.reactivex.Single;
-import io.reactivex.annotations.CheckReturnValue;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.annotations.Nullable;
-import io.reactivex.functions.Function;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.annotations.CheckReturnValue;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.annotations.Nullable;
+import io.reactivex.rxjava3.functions.Function;
 
 import static com.vanniktech.rxpermission.Permission.State.GRANTED;
 import static com.vanniktech.rxpermission.Permission.State.REVOKED_BY_POLICY;
