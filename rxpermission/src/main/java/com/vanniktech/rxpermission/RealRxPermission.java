@@ -3,6 +3,7 @@ package com.vanniktech.rxpermission;
 import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Context;
+import androidx.annotation.ChecksSdkIntAtLeast;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
@@ -193,7 +194,7 @@ public final class RealRxPermission implements RxPermission {
     }
   }
 
-  boolean isMarshmallow() {
+  @ChecksSdkIntAtLeast(api = M) boolean isMarshmallow() {
     return SDK_INT >= M;
   }
 
