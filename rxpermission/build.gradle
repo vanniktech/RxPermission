@@ -1,6 +1,8 @@
 apply plugin: 'com.android.library'
 
 android {
+  namespace "com.vanniktech.rxpermission"
+
   compileSdkVersion versions.compileSdk
 
   defaultConfig {
@@ -20,13 +22,14 @@ android {
   resourcePrefix 'rx_permission_'
 
   compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_7
-    targetCompatibility JavaVersion.VERSION_1_7
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
   }
 }
 
 dependencies {
   api deps.rx.java
+  api deps.support.annotation
 
   compileOnly deps.autoValue.runtime
   annotationProcessor deps.autoValue.compiler
