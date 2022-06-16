@@ -1,7 +1,12 @@
 # Change Log
 
-Version 0.8.0 *(In development)*
---------------------------------
+Version 0.8.0 *(2022-06-16)*
+----------------------------
+
+- Stopping permission requests on activity restore [\#76](https://github.com/vanniktech/RxPermission/pull/76) ([rprunskas](https://github.com/rprunskas))
+- Target 29 & add test for location background permission. [\#73](https://github.com/vanniktech/RxPermission/pull/73) ([vanniktech](https://github.com/vanniktech))
+- Fix NullpointerException in ShadowActivity\#handleIntent. [\#70](https://github.com/vanniktech/RxPermission/pull/70) ([vanniktech](https://github.com/vanniktech))
+- Separate testing infrastructure into it's own module. [\#65](https://github.com/vanniktech/RxPermission/pull/65) ([vanniktech](https://github.com/vanniktech))
 
 Version 0.7.0 *(2019-01-06)*
 ----------------------------

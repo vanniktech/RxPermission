@@ -10,7 +10,7 @@ This library wraps the Android Runtime Permissions with RxJava 2. It's based on 
 # Download
 
 ```groovy
-implementation 'com.vanniktech:rxpermission:0.7.0'
+implementation 'com.vanniktech:rxpermission:0.8.0'
 implementation 'com.vanniktech:rxpermission:0.8.0-SNAPSHOT'
 ```
 
@@ -77,7 +77,13 @@ RealRxPermission.getInstance(application)
 
 ## Testing
 
-In addition the library offers you a `MockRxPermission` that can be used for testing. The constructor takes a vararg of Permissions.
+In addition the library offers you a `MockRxPermission` that can be used for testing.
+
+```gradle
+implementation 'com.vanniktech:rxpermission-testing:0.8.0'
+```
+
+The constructor takes a vararg of Permissions.
 
 ```java
 new MockRxPermission(Permission.denied(Manifest.permission.CAMERA))
