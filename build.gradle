@@ -36,7 +36,7 @@ buildscript {
       ],
     ],
     'test': [
-      'mockito': 'org.mockito:mockito-core:2.28.2',
+      'mockito': 'org.mockito:mockito-core:4.6.1',
       'junit': 'junit:junit:4.13.2',
       'assertj3': 'org.assertj:assertj-core:3.23.1',
     ],
