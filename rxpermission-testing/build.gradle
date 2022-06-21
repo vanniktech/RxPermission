@@ -1,4 +1,13 @@
+plugins {
+  id("app.cash.licensee")
+}
+
 apply plugin: 'com.android.library'
+
+licensee {
+  allow("Apache-2.0")
+  allow("CC0-1.0")
+}
 
 android {
   namespace = "com.vanniktech.rxpermission.testing"
