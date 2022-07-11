@@ -2,6 +2,7 @@
   "extends": [
     "config:base"
   ],
+  "allowedPostUpgradeCommands": ["^.\/gradlew dependencyGuardBaseline$"],
   "postUpgradeTasks": {
     "commands": ["./gradlew dependencyGuardBaseline"],
     "fileFilters": ["**/*.toml"],
