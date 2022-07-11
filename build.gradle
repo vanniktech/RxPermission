@@ -51,7 +51,7 @@ buildscript {
   dependencies {
     classpath 'com.android.tools.build:gradle:7.2.1'
     classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.21.0'
-    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.20.0'
+    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.21.0'
     classpath 'app.cash.licensee:licensee-gradle-plugin:1.4.1'
     classpath 'com.dropbox.dependency-guard:dependency-guard:0.3.1'
   }
