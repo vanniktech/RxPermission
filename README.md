@@ -10,7 +10,7 @@ This library wraps the Android Runtime Permissions with RxJava 2. It's based on 
 # Download
 
 ```groovy
-implementation 'com.vanniktech:rxpermission:0.8.0'
+implementation 'com.vanniktech:rxpermission:0.9.0'
 implementation 'com.vanniktech:rxpermission:0.9.0-SNAPSHOT'
 ```
 
@@ -18,19 +18,22 @@ implementation 'com.vanniktech:rxpermission:0.9.0-SNAPSHOT'
 
 The core functionality is provided via an interface:
 
-```java
-public interface RxPermission {
-  /** Requests a single permission. */
-  Single<Permission> request(String permission);
+```kotlin
+interface RxPermission {
+  /** Requests a single permission.  */
+  @CheckReturnValue fun request(permission: String): Single<Permission?>
 
-  /** Requests multiple permissions. */
-  Observable<Permission> requestEach(String... permissions);
+  /** Requests multiple permissions.  */
+  @CheckReturnValue fun requestEach(vararg permissions: String): Observable<Permission?>
 
-  /** Returns true when the given permission is granted. */
-  boolean isGranted(String permission);
+  /** Returns true when the given permission is granted.  */
+  @CheckReturnValue fun isGranted(permission: String): Boolean
 
-  /** Returns true when the given permission is revoked by a policy. */
-  boolean isRevokedByPolicy(String permission);
+  /** Returns true when the given permission is revoked by a policy.  */
+  @CheckReturnValue fun isRevokedByPolicy(permission: String): Boolean
+
+  /** Returns tue when the given permission has been request at least once using either [request] or [requestEach].  */
+  @CheckReturnValue fun hasRequested(permission: String): Boolean
 }
 ```
 
@@ -80,7 +83,7 @@ RealRxPermission.getInstance(application)
 In addition the library offers you a `MockRxPermission` that can be used for testing.
 
 ```gradle
-implementation 'com.vanniktech:rxpermission-testing:0.8.0'
+implementation 'com.vanniktech:rxpermission-testing:0.9.0'
 ```
 
 The constructor takes a vararg of Permissions.

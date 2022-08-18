@@ -1,7 +1,12 @@
 # Change Log
 
-Version 0.9.0 *(In development)*
---------------------------------
+Version 0.9.0 *(2022-08-18)*
+----------------------------
+
+- RxPermission: hasRequested API to check if Permission has been requested once before. [\#105](https://github.com/vanniktech/RxPermission/pull/105) ([vanniktech](https://github.com/vanniktech))
+- Add Dependency Guard plugin. [\#96](https://github.com/vanniktech/RxPermission/pull/96) ([vanniktech](https://github.com/vanniktech))
+- Add licensee plugin for License verification. [\#95](https://github.com/vanniktech/RxPermission/pull/95) ([vanniktech](https://github.com/vanniktech))
+- Lint: Fail upon SyntheticAccessor issues. [\#94](https://github.com/vanniktech/RxPermission/pull/94) ([vanniktech](https://github.com/vanniktech))
 
 Version 0.8.0 *(2022-06-16)*
 ----------------------------
