@@ -11,7 +11,7 @@ This library wraps the Android Runtime Permissions with RxJava 2. It's based on 
 
 ```groovy
 implementation 'com.vanniktech:rxpermission:0.9.0'
-implementation 'com.vanniktech:rxpermission:0.9.0-SNAPSHOT'
+implementation 'com.vanniktech:rxpermission:0.10.0-SNAPSHOT'
 ```
 
 # Usage
