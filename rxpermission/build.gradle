@@ -1,9 +1,9 @@
 plugins {
   id("app.cash.licensee")
   id("com.dropbox.dependency-guard")
+  id("com.android.library")
+  id("org.jetbrains.kotlin.android")
 }
-
-apply plugin: 'com.android.library'
 
 licensee {
   allow("Apache-2.0")

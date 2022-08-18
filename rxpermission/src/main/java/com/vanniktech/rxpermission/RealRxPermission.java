@@ -3,6 +3,7 @@ package com.vanniktech.rxpermission;
 import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import androidx.annotation.ChecksSdkIntAtLeast;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
@@ -13,9 +14,14 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 import io.reactivex.subjects.PublishSubject;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import org.jetbrains.annotations.NotNull;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.os.Build.VERSION.SDK_INT;
@@ -28,6 +34,8 @@ import static com.vanniktech.rxpermission.Utils.checkPermissions;
 public final class RealRxPermission implements RxPermission {
   static final Object TRIGGER = new Object();
   static RealRxPermission instance;
+
+  static final String PREF_REQUESTED_PERMISSIONS = "requested-permissions";
 
   /**
    * @param context any context
@@ -165,6 +173,15 @@ public final class RealRxPermission implements RxPermission {
   }
 
   void startShadowActivity(final String[] permissions) {
+    final SharedPreferences sharedPreferences = getSharedPreferences();
+    final Set<String> requestedPermission = new HashSet<>(sharedPreferences.getStringSet(PREF_REQUESTED_PERMISSIONS, Collections.emptySet()));
+    requestedPermission.addAll(Arrays.asList(permissions));
+
+    sharedPreferences
+        .edit()
+        .putStringSet(PREF_REQUESTED_PERMISSIONS, requestedPermission)
+        .apply();
+
     ShadowActivity.start(application, permissions);
   }
 
@@ -200,5 +217,15 @@ public final class RealRxPermission implements RxPermission {
 
   void cancelPermissionsRequests() {
     currentPermissionRequests.clear();
+  }
+
+  @Override public boolean hasRequested(@NotNull String permission) {
+    final SharedPreferences sharedPreferences = getSharedPreferences();
+    final Set<String> requestedPermission = sharedPreferences.getStringSet(PREF_REQUESTED_PERMISSIONS, Collections.emptySet());
+    return requestedPermission.contains(permission);
+  }
+
+  private SharedPreferences getSharedPreferences() {
+    return application.getSharedPreferences("RxPermission", Context.MODE_PRIVATE);
   }
 }

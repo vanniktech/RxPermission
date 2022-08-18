@@ -8,6 +8,7 @@ import org.junit.Test;
 import static android.Manifest.permission.CALL_PHONE;
 import static android.Manifest.permission.CAMERA;
 import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 public final class MockRxPermissionTest {
@@ -147,6 +148,28 @@ public final class MockRxPermissionTest {
         .requestEach(CALL_PHONE, CAMERA)
         .test()
         .assertResult(callPhoneGranted, cameraGranted);
+  }
+
+  @Test public void hasRequested() {
+    final MockRxPermission mockRxPermission = new MockRxPermission(callPhoneGranted, cameraGranted);
+    assertEquals(false, mockRxPermission.hasRequested(CALL_PHONE));
+    assertEquals(false, mockRxPermission.hasRequested(CAMERA));
+
+    mockRxPermission
+        .request(CALL_PHONE)
+        .test()
+        .assertResult(callPhoneGranted);
+
+    assertEquals(true, mockRxPermission.hasRequested(CALL_PHONE));
+    assertEquals(false, mockRxPermission.hasRequested(CAMERA));
+
+    mockRxPermission
+        .requestEach(CAMERA)
+        .test()
+        .assertResult(cameraGranted);
+
+    assertEquals(true, mockRxPermission.hasRequested(CALL_PHONE));
+    assertEquals(true, mockRxPermission.hasRequested(CAMERA));
   }
 
   @Test public void isGranted() {

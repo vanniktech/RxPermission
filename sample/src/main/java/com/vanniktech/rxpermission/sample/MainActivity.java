@@ -1,20 +1,19 @@
 package com.vanniktech.rxpermission.sample;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
-import com.vanniktech.rxpermission.Permission;
-import com.vanniktech.rxpermission.RealRxPermission;
-import com.vanniktech.rxpermission.RxPermission;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import com.vanniktech.rxpermission.RealRxPermission;
+import com.vanniktech.rxpermission.RxPermission;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity {
+  private static final String PERMISSION = Manifest.permission.CAMERA;
   RxPermission rxPermission;
 
   @NonNull final CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -24,17 +23,18 @@ public class MainActivity extends AppCompatActivity {
     rxPermission = RealRxPermission.getInstance(getApplication());
 
     setContentView(R.layout.activity_main);
+    updateTextView();
 
-    findViewById(R.id.enableCamera).setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(final View v) {
-        compositeDisposable.add(rxPermission.requestEach(Manifest.permission.CAMERA)
-            .subscribe(new Consumer<Permission>() {
-              @Override public void accept(final Permission granted) throws Exception {
-                Toast.makeText(MainActivity.this, granted.toString(), Toast.LENGTH_LONG).show();
-              }
-            }));
-      }
-    });
+    findViewById(R.id.enableCamera).setOnClickListener(v -> compositeDisposable.add(rxPermission.requestEach(
+            PERMISSION)
+        .subscribe(granted -> {
+          updateTextView();
+          Toast.makeText(this, granted.toString(), Toast.LENGTH_LONG).show();
+        })));
+  }
+
+  @SuppressLint("SetTextI18n") private void updateTextView() {
+    this.<TextView>findViewById(R.id.textView).setText("Has requested: " + rxPermission.hasRequested(PERMISSION));
   }
 
   @Override protected void onDestroy() {
