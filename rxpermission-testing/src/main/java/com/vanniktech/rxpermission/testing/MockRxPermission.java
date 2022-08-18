@@ -8,6 +8,8 @@ import io.reactivex.annotations.CheckReturnValue;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.annotations.Nullable;
 import io.reactivex.functions.Function;
+import java.util.HashSet;
+import java.util.Set;
 
 import static com.vanniktech.rxpermission.Permission.State.GRANTED;
 import static com.vanniktech.rxpermission.Permission.State.REVOKED_BY_POLICY;
@@ -19,6 +21,8 @@ import static com.vanniktech.rxpermission.testing.Utils.checkPermissions;
  */
 public final class MockRxPermission implements RxPermission {
   private final Permission[] permissions;
+
+  private final Set<String> requestedPermissions = new HashSet<>();
 
   public MockRxPermission(final Permission... permissions) {
     this.permissions = permissions;
@@ -66,11 +70,17 @@ public final class MockRxPermission implements RxPermission {
 
   @Nullable Permission get(@NonNull final String name) {
     for (final Permission permission : permissions) {
+      requestedPermissions.add(name);
+
       if (permission.name().equals(name)) {
         return permission;
       }
     }
 
     return null;
+  }
+
+  @Override public boolean hasRequested(@NonNull final String permission) {
+    return requestedPermissions.contains(permission);
   }
 }
