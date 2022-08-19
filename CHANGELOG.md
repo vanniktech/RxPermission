@@ -1,7 +1,9 @@
 # Change Log
 
-Version 0.10.0 *(In development)*
----------------------------------
+Version 0.10.0 *(2022-08-19)*
+-----------------------------
+
+- RxPermission: Fix return type of request & requestEach. Always non-null. [\#106](https://github.com/vanniktech/RxPermission/pull/106) ([vanniktech](https://github.com/vanniktech))
 
 Version 0.9.0 *(2022-08-18)*
 ----------------------------
