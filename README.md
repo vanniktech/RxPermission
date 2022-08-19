@@ -11,7 +11,7 @@ This library wraps the Android Runtime Permissions with RxJava 2. It's based on 
 
 ```groovy
 implementation 'com.vanniktech:rxpermission:0.10.0'
-implementation 'com.vanniktech:rxpermission:0.10.0-SNAPSHOT'
+implementation 'com.vanniktech:rxpermission:0.11.0-SNAPSHOT'
 ```
 
 # Usage
@@ -21,10 +21,10 @@ The core functionality is provided via an interface:
 ```kotlin
 interface RxPermission {
   /** Requests a single permission.  */
-  @CheckReturnValue fun request(permission: String): Single<Permission?>
+  @CheckReturnValue fun request(permission: String): Single<Permission>
 
   /** Requests multiple permissions.  */
-  @CheckReturnValue fun requestEach(vararg permissions: String): Observable<Permission?>
+  @CheckReturnValue fun requestEach(vararg permissions: String): Observable<Permission>
 
   /** Returns true when the given permission is granted.  */
   @CheckReturnValue fun isGranted(permission: String): Boolean
