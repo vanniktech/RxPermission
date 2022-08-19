@@ -6,10 +6,10 @@ import io.reactivex.annotations.CheckReturnValue
 
 interface RxPermission {
   /** Requests a single permission.  */
-  @CheckReturnValue fun request(permission: String): Single<Permission?>
+  @CheckReturnValue fun request(permission: String): Single<Permission>
 
   /** Requests multiple permissions.  */
-  @CheckReturnValue fun requestEach(vararg permissions: String): Observable<Permission?>
+  @CheckReturnValue fun requestEach(vararg permissions: String): Observable<Permission>
 
   /** Returns true when the given permission is granted.  */
   @CheckReturnValue fun isGranted(permission: String): Boolean
