@@ -75,7 +75,7 @@ codeQualityTools {
     enabled = false
   }
   ktlint {
-    version = "0.45.2"
+    version = "0.47.1"
   }
 }
 
@@ -87,9 +87,4 @@ subprojects {
     google()
     jcenter()
   }
-}
-
-wrapper {
-  gradleVersion = '7.4.2'
-  distributionType = Wrapper.DistributionType.ALL
 }
