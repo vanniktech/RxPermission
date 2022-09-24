@@ -1,6 +1,6 @@
 androidx.activity:activity:1.5.1
 androidx.annotation:annotation-experimental:1.1.0
-androidx.annotation:annotation:1.4.0
+androidx.annotation:annotation:1.5.0
 androidx.appcompat:appcompat-resources:1.5.1
 androidx.appcompat:appcompat:1.5.1
 androidx.arch.core:core-common:2.1.0
