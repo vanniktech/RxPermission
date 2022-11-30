@@ -6,7 +6,7 @@ buildscript {
     compileSdk: 33,
     targetSdk: 33,
     autoValue: '1.6.3',
-    espresso: '3.4.0',
+    espresso: '3.5.0',
     testRules: '1.1.1',
   ]
 
