@@ -1,12 +1,4 @@
-plugins {
-  id("com.dropbox.dependency-guard")
-}
-
 apply plugin: 'com.android.application'
-
-dependencyGuard {
-  configuration("releaseRuntimeClasspath")
-}
 
 android {
   namespace "com.vanniktech.rxpermission.sample"
