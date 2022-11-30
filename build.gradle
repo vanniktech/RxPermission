@@ -54,7 +54,6 @@ buildscript {
     classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.22.0'
     classpath 'com.vanniktech:gradle-maven-publish-plugin:0.22.0'
     classpath 'app.cash.licensee:licensee-gradle-plugin:1.6.0'
-    classpath 'com.dropbox.dependency-guard:dependency-guard:0.3.2'
   }
 }
 
