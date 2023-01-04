@@ -28,7 +28,7 @@ buildscript {
           'intents': "androidx.test.espresso:espresso-intents:${versions.espresso}",
         ],
 
-        'junitExt': "androidx.test.ext:junit:1.1.4",
+        'junitExt': "androidx.test.ext:junit:1.1.5",
         'runner': "androidx.test:runner:1.5.2",
         'rules': "androidx.test:rules:1.5.0",
         'uiautomator': 'androidx.test.uiautomator:uiautomator:2.2.0',
