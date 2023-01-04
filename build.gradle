@@ -6,7 +6,7 @@ buildscript {
     compileSdk: 33,
     targetSdk: 33,
     autoValue: '1.10.1',
-    espresso: '3.5.0',
+    espresso: '3.5.1',
   ]
 
   ext.deps = [
