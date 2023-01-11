@@ -18,7 +18,7 @@ buildscript {
       'runtime': "com.google.auto.value:auto-value-annotations:${versions.autoValue}",
     ],
     'support': [
-      'appCompat': "androidx.appcompat:appcompat:1.5.1",
+      'appCompat': "androidx.appcompat:appcompat:1.6.0",
       'annotation': "androidx.annotation:annotation:1.5.0",
 
       'test': [
