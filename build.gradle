@@ -52,7 +52,7 @@ buildscript {
     classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.21'
     classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.22.0'
     classpath 'com.vanniktech:gradle-maven-publish-plugin:0.25.2'
-    classpath 'app.cash.licensee:licensee-gradle-plugin:1.6.0'
+    classpath 'app.cash.licensee:licensee-gradle-plugin:1.7.0'
   }
 }
 
