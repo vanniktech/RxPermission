@@ -5,7 +5,7 @@ buildscript {
     minSdk: 14,
     compileSdk: 33,
     targetSdk: 33,
-    autoValue: '1.10.1',
+    autoValue: '1.10.2',
     espresso: '3.5.1',
   ]
 
