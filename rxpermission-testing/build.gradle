@@ -1,12 +1,20 @@
 plugins {
   id("app.cash.licensee")
+  id("com.android.library")
+  id("com.vanniktech.maven.publish")
+  id("org.jetbrains.dokka")
+  id("org.jetbrains.kotlin.android")
 }
-
-apply plugin: 'com.android.library'
 
 licensee {
   allow("Apache-2.0")
   allow("CC0-1.0")
+}
+
+kotlin {
+  jvmToolchain {
+    languageVersion.set(JavaLanguageVersion.of(11))
+  }
 }
 
 android {
@@ -21,8 +29,8 @@ android {
   resourcePrefix 'rx_permission_testing_'
 
   compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
+    sourceCompatibility JavaVersion.VERSION_11
+    targetCompatibility JavaVersion.VERSION_11
   }
 }
 
@@ -34,5 +42,3 @@ dependencies {
   testImplementation deps.test.junit
   testImplementation deps.test.assertj3
 }
-
-apply plugin: "com.vanniktech.maven.publish"

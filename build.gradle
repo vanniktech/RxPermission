@@ -48,8 +48,9 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:7.4.2'
+    classpath 'com.android.tools.build:gradle:8.0.2'
     classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22'
+    classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.8.20'
     classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.22.0'
     classpath 'com.vanniktech:gradle-maven-publish-plugin:0.25.3'
     classpath 'app.cash.licensee:licensee-gradle-plugin:1.7.0'
@@ -78,8 +79,6 @@ codeQualityTools {
 }
 
 subprojects {
-  task allDependencies(type: DependencyReportTask) {}
-
   repositories {
     mavenCentral()
     google()
