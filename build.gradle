@@ -74,7 +74,7 @@ codeQualityTools {
     enabled = false
   }
   ktlint {
-    version = "0.47.1"
+    version = "1.0.1"
   }
 }
 
