@@ -37,7 +37,7 @@ buildscript {
     'test': [
       'mockito': 'org.mockito:mockito-core:5.10.0',
       'junit': 'junit:junit:4.13.2',
-      'assertj3': 'org.assertj:assertj-core:3.25.2',
+      'assertj3': 'org.assertj:assertj-core:3.25.3',
     ],
   ]
 
