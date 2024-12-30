@@ -189,22 +189,21 @@ public final class RealRxPermission implements RxPermission {
     final int size = permissions.length;
 
     for (int i = 0; i < size; i++) {
-      final PublishSubject<Permission> subject = currentPermissionRequests.get(permissions[i]);
+      final String permission = permissions[i];
+      final PublishSubject<Permission> subject = currentPermissionRequests.remove(permission);
 
       if (subject == null) {
-        throw new IllegalStateException("RealRxPermission.onRequestPermissionsResult invoked but didn't find the corresponding permission request.");
+        throw new IllegalStateException("RealRxPermission.onRequestPermissionsResult invoked but didn't find the corresponding permission request for " + permission);
       }
-
-      currentPermissionRequests.remove(permissions[i]);
 
       final boolean granted = grantResults[i] == PERMISSION_GRANTED;
 
       if (granted) {
-        subject.onNext(Permission.granted(permissions[i]));
+        subject.onNext(Permission.granted(permission));
       } else if (!rationale[i] && !rationaleAfter[i]) {
-        subject.onNext(Permission.deniedNotShown(permissions[i]));
+        subject.onNext(Permission.deniedNotShown(permission));
       } else {
-        subject.onNext(Permission.denied(permissions[i]));
+        subject.onNext(Permission.denied(permission));
       }
 
       subject.onComplete();
