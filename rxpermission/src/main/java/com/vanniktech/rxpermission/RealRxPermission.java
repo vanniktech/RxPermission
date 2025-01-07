@@ -37,6 +37,8 @@ public final class RealRxPermission implements RxPermission {
 
   static final String PREF_REQUESTED_PERMISSIONS = "requested-permissions";
 
+  static final StringBuffer TRACES = new StringBuffer();
+
   /**
    * @param context any context
    * @return a Singleton instance of this class
@@ -44,6 +46,7 @@ public final class RealRxPermission implements RxPermission {
   public static RealRxPermission getInstance(final Context context) {
     synchronized (RealRxPermission.class) {
       if (instance == null) {
+        TRACES.append("created new instance -> ");
         instance = new RealRxPermission((Application) context.getApplicationContext());
       }
     }
@@ -131,7 +134,10 @@ public final class RealRxPermission implements RxPermission {
         if (subject == null) {
           unrequestedPermissions.add(permission);
           subject = PublishSubject.create();
+          TRACES.append("putting ").append(permission).append(" -> ");
           currentPermissionRequests.put(permission, subject);
+        } else {
+          TRACES.append("obtained ").append(permission).append(" -> ");
         }
 
         list.add(subject);
@@ -190,10 +196,11 @@ public final class RealRxPermission implements RxPermission {
 
     for (int i = 0; i < size; i++) {
       final String permission = permissions[i];
+      TRACES.append("removing ").append(permission).append(" -> ");
       final PublishSubject<Permission> subject = currentPermissionRequests.remove(permission);
 
       if (subject == null) {
-        throw new IllegalStateException("RealRxPermission.onRequestPermissionsResult invoked but didn't find the corresponding permission request for " + permission);
+        throw new IllegalStateException("RealRxPermission.onRequestPermissionsResult invoked but didn't find the corresponding permission request for " + permission + " debug logs: " + TRACES);
       }
 
       final boolean granted = grantResults[i] == PERMISSION_GRANTED;
@@ -215,6 +222,7 @@ public final class RealRxPermission implements RxPermission {
   }
 
   void cancelPermissionsRequests() {
+    TRACES.append("cancelPermissionsRequests -> ");
     currentPermissionRequests.clear();
   }
 
