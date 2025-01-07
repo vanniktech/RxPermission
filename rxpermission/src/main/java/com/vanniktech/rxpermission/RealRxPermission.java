@@ -16,11 +16,11 @@ import io.reactivex.subjects.PublishSubject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import org.jetbrains.annotations.NotNull;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
@@ -54,7 +54,7 @@ public final class RealRxPermission implements RxPermission {
   private final Application application;
 
   // Contains all the current permission requests. Once granted or denied, they are removed from it.
-  private final Map<String, PublishSubject<Permission>> currentPermissionRequests = new HashMap<>();
+  private final Map<String, PublishSubject<Permission>> currentPermissionRequests = new ConcurrentHashMap<>();
 
   RealRxPermission(final Application application) {
     this.application = application;
