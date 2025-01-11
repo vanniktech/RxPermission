@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import io.reactivex.annotations.NonNull;
+import java.util.Arrays;
 
 import static android.os.Build.VERSION_CODES.M;
 
@@ -28,6 +29,8 @@ import static android.os.Build.VERSION_CODES.M;
     if (savedInstanceState == null) {
       handleIntent(getIntent());
     } else {
+      final Intent intent = getIntent();
+      RealRxPermission.TRACES.append("onCreate null, intent=").append(intent != null ? Arrays.toString(intent.getStringArrayExtra(ARG_PERMISSIONS)) : "null");
       RealRxPermission.getInstance(this).cancelPermissionsRequests();
       finish();
     }
