@@ -1,7 +1,11 @@
 # Change Log
 
-Version 0.11.0 *(In development)*
----------------------------------
+Version 0.11.0 *(2025-01-19)*
+-----------------------------
+
+- Behavior change: Do not crash if the corresponding permission request can not be found. Instead we no-op. [\#271](https://github.com/vanniktech/RxPermission/pull/271) ([vanniktech](https://github.com/vanniktech))
+- Bug fix: Use ConcurrentHashMap to keep track of currentPermissionRequests to avoid multithreading issues. [\#268](https://github.com/vanniktech/RxPermission/pull/268) ([vanniktech](https://github.com/vanniktech))
+- Include permission name in exception message. [\#266](https://github.com/vanniktech/RxPermission/pull/266) ([vanniktech](https://github.com/vanniktech))
 
 Version 0.10.0 *(2022-08-19)*
 -----------------------------
