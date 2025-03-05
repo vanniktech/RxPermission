@@ -1,15 +1,13 @@
 package com.vanniktech.rxpermission;
 
-import android.annotation.TargetApi;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import io.reactivex.annotations.NonNull;
 
-import static android.os.Build.VERSION_CODES.M;
-
-@TargetApi(M) public final class ShadowActivity extends Activity {
+@SuppressLint("NewApi") public final class ShadowActivity extends Activity {
   private static final String ARG_PERMISSIONS = "permissions";
   private static final int REQUEST_CODE = 42;
 

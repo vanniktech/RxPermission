@@ -1,10 +1,10 @@
 package com.vanniktech.rxpermission;
 
-import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import androidx.annotation.ChecksSdkIntAtLeast;
+import androidx.annotation.RequiresApi;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
@@ -93,7 +93,7 @@ public final class RealRxPermission implements RxPermission {
     };
   }
 
-  @NonNull @CheckReturnValue @SuppressWarnings("checkstyle:overloadmethodsdeclarationorder") Observable<Permission> request(final Observable<?> trigger, @NonNull final String... permissions) {
+  @NonNull @CheckReturnValue Observable<Permission> request(final Observable<?> trigger, @NonNull final String... permissions) {
     return Observable.merge(trigger, pending(permissions))
         .flatMap(new Function<Object, Observable<Permission>>() {
           @Override @NonNull @CheckReturnValue public Observable<Permission> apply(final Object o) {
@@ -112,7 +112,7 @@ public final class RealRxPermission implements RxPermission {
     return Observable.just(TRIGGER);
   }
 
-  @NonNull @CheckReturnValue @TargetApi(M) Observable<Permission> requestOnM(@NonNull final String... permissions) {
+  @NonNull @CheckReturnValue Observable<Permission> requestOnM(@NonNull final String... permissions) {
     final List<Observable<Permission>> list = new ArrayList<>(permissions.length);
     final List<String> unrequestedPermissions = new ArrayList<>();
 
@@ -164,11 +164,11 @@ public final class RealRxPermission implements RxPermission {
     return isMarshmallow() && isRevokedOnM(permission);
   }
 
-  @TargetApi(M) private boolean isGrantedOnM(final String permission) {
+  @RequiresApi(M) private boolean isGrantedOnM(final String permission) {
     return application.checkSelfPermission(permission) == PERMISSION_GRANTED;
   }
 
-  @TargetApi(M) private boolean isRevokedOnM(final String permission) {
+  @RequiresApi(M) private boolean isRevokedOnM(final String permission) {
     return application.getPackageManager().isPermissionRevokedByPolicy(permission, application.getPackageName());
   }
 
