@@ -1,6 +1,6 @@
 package com.vanniktech.rxpermission;
 
-import android.annotation.TargetApi;
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.pm.PackageManager;
 import io.reactivex.observers.TestObserver;
@@ -17,7 +17,6 @@ import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.READ_PHONE_STATE;
 import static android.content.pm.PackageManager.PERMISSION_DENIED;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static android.os.Build.VERSION_CODES.M;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
@@ -28,7 +27,7 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.quality.Strictness.WARN;
 
-@SuppressWarnings("CheckResult") public class RealRxPermissionTest {
+@SuppressWarnings("CheckResult") @SuppressLint("NewApi") public class RealRxPermissionTest {
   @Rule public final MockitoRule mockitoRule = MockitoJUnit.rule().strictness(WARN);
 
   private static final boolean[] FALSE_ARRAY = { false };
@@ -65,7 +64,7 @@ import static org.mockito.quality.Strictness.WARN;
         .assertResult(Permission.granted(READ_PHONE_STATE));
   }
 
-  @Test @TargetApi(M) public void requestGranted() {
+  @Test public void requestGranted() {
     doReturn(false).when(rxPermission).isGranted(READ_PHONE_STATE);
 
     final TestObserver<Permission> o = rxPermission.request(READ_PHONE_STATE)
@@ -75,7 +74,7 @@ import static org.mockito.quality.Strictness.WARN;
     o.assertResult(Permission.granted(READ_PHONE_STATE));
   }
 
-  @Test @TargetApi(M) public void requestDeniedFirstTime() {
+  @Test public void requestDeniedFirstTime() {
     doReturn(false).when(rxPermission).isGranted(READ_PHONE_STATE);
 
     final TestObserver<Permission> o = rxPermission.request(READ_PHONE_STATE)
@@ -85,7 +84,7 @@ import static org.mockito.quality.Strictness.WARN;
     o.assertResult(Permission.denied(READ_PHONE_STATE));
   }
 
-  @Test @TargetApi(M) public void requestDeniedAnyOtherTime() {
+  @Test public void requestDeniedAnyOtherTime() {
     doReturn(false).when(rxPermission).isGranted(READ_PHONE_STATE);
 
     final TestObserver<Permission> o = rxPermission.request(READ_PHONE_STATE)
@@ -95,7 +94,7 @@ import static org.mockito.quality.Strictness.WARN;
     o.assertResult(Permission.denied(READ_PHONE_STATE));
   }
 
-  @Test @TargetApi(M) public void requestDeniedNotShown() {
+  @Test public void requestDeniedNotShown() {
     doReturn(false).when(rxPermission).isGranted(READ_PHONE_STATE);
 
     final TestObserver<Permission> o = rxPermission.request(READ_PHONE_STATE)
@@ -105,7 +104,7 @@ import static org.mockito.quality.Strictness.WARN;
     o.assertResult(Permission.deniedNotShown(READ_PHONE_STATE));
   }
 
-  @Test @TargetApi(M) public void requestRevoked() {
+  @Test public void requestRevoked() {
     doReturn(false).when(rxPermission).isGranted(READ_PHONE_STATE);
     doReturn(true).when(rxPermission).isRevokedByPolicy(READ_PHONE_STATE);
 
@@ -122,7 +121,7 @@ import static org.mockito.quality.Strictness.WARN;
         .assertResult(Permission.granted(READ_PHONE_STATE));
   }
 
-  @Test @TargetApi(M) public void requestEachGranted() {
+  @Test public void requestEachGranted() {
     doReturn(false).when(rxPermission).isGranted(READ_PHONE_STATE);
 
     final TestObserver<Permission> o = rxPermission.requestEach(READ_PHONE_STATE)
@@ -132,7 +131,7 @@ import static org.mockito.quality.Strictness.WARN;
     o.assertResult(Permission.granted(READ_PHONE_STATE));
   }
 
-  @Test @TargetApi(M) public void requestEachDeniedFirstTime() {
+  @Test public void requestEachDeniedFirstTime() {
     doReturn(false).when(rxPermission).isGranted(READ_PHONE_STATE);
 
     final TestObserver<Permission> o = rxPermission.requestEach(READ_PHONE_STATE)
@@ -142,7 +141,7 @@ import static org.mockito.quality.Strictness.WARN;
     o.assertResult(Permission.denied(READ_PHONE_STATE));
   }
 
-  @Test @TargetApi(M) public void requestEachDeniedAnyOtherTime() {
+  @Test public void requestEachDeniedAnyOtherTime() {
     doReturn(false).when(rxPermission).isGranted(READ_PHONE_STATE);
 
     final TestObserver<Permission> o = rxPermission.requestEach(READ_PHONE_STATE)
@@ -152,7 +151,7 @@ import static org.mockito.quality.Strictness.WARN;
     o.assertResult(Permission.denied(READ_PHONE_STATE));
   }
 
-  @Test @TargetApi(M) public void requestEachDeniedNotShown() {
+  @Test public void requestEachDeniedNotShown() {
     doReturn(false).when(rxPermission).isGranted(READ_PHONE_STATE);
 
     final TestObserver<Permission> o = rxPermission.requestEach(READ_PHONE_STATE)
@@ -162,7 +161,7 @@ import static org.mockito.quality.Strictness.WARN;
     o.assertResult(Permission.deniedNotShown(READ_PHONE_STATE));
   }
 
-  @Test @TargetApi(M) public void requestEachRevoked() {
+  @Test public void requestEachRevoked() {
     doReturn(false).when(rxPermission).isGranted(READ_PHONE_STATE);
     doReturn(true).when(rxPermission).isRevokedByPolicy(READ_PHONE_STATE);
 
@@ -171,7 +170,7 @@ import static org.mockito.quality.Strictness.WARN;
         .assertResult(Permission.revokedByPolicy(READ_PHONE_STATE));
   }
 
-  @Test @TargetApi(M) public void requestEachSeveralPermissionsGranted() {
+  @Test public void requestEachSeveralPermissionsGranted() {
     final String[] permissions = { READ_PHONE_STATE, CAMERA };
     doReturn(false).when(rxPermission).isGranted(anyString());
     final int[] result = { PERMISSION_GRANTED, PERMISSION_GRANTED };
@@ -184,7 +183,7 @@ import static org.mockito.quality.Strictness.WARN;
     o.assertResult(Permission.granted(READ_PHONE_STATE), Permission.granted(CAMERA));
   }
 
-  @Test @TargetApi(M) public void requestEachSeveralPermissionsOneAlreadyGranted() {
+  @Test public void requestEachSeveralPermissionsOneAlreadyGranted() {
     doReturn(false).when(rxPermission).isGranted(READ_PHONE_STATE);
     doReturn(true).when(rxPermission).isGranted(CAMERA);
 
@@ -198,7 +197,7 @@ import static org.mockito.quality.Strictness.WARN;
     assertThat(requestedPermissions.getValue()).containsExactly(READ_PHONE_STATE);
   }
 
-  @Test @TargetApi(M) public void requestEachSeveralPermissionsOneDenied() {
+  @Test public void requestEachSeveralPermissionsOneDenied() {
     final String[] permissions = { READ_PHONE_STATE, CAMERA };
     doReturn(false).when(rxPermission).isGranted(anyString());
     final int[] result = { PERMISSION_GRANTED, PERMISSION_DENIED };
@@ -211,7 +210,7 @@ import static org.mockito.quality.Strictness.WARN;
     o.assertResult(Permission.granted(READ_PHONE_STATE), Permission.deniedNotShown(CAMERA));
   }
 
-  @Test @TargetApi(M) public void requestEachSeveralPermissionsOneRevoked() {
+  @Test public void requestEachSeveralPermissionsOneRevoked() {
     final String[] permissions = { READ_PHONE_STATE, CAMERA };
     doReturn(false).when(rxPermission).isGranted(READ_PHONE_STATE);
     doReturn(false).when(rxPermission).isGranted(CAMERA);
@@ -231,14 +230,14 @@ import static org.mockito.quality.Strictness.WARN;
     assertThat(rxPermission.isGranted("p")).isTrue();
   }
 
-  @Test @TargetApi(M) public void isGrantedGranted() {
+  @Test public void isGrantedGranted() {
     doReturn(true).when(rxPermission).isMarshmallow();
     doReturn(PERMISSION_GRANTED).when(context).checkSelfPermission("p");
 
     assertThat(rxPermission.isGranted("p")).isTrue();
   }
 
-  @Test @TargetApi(M) public void isGrantedDenied() {
+  @Test public void isGrantedDenied() {
     doReturn(true).when(rxPermission).isMarshmallow();
     doReturn(PERMISSION_DENIED).when(context).checkSelfPermission("p");
 
@@ -251,7 +250,7 @@ import static org.mockito.quality.Strictness.WARN;
     assertThat(rxPermission.isRevokedByPolicy("p")).isFalse();
   }
 
-  @Test @TargetApi(M) public void isRevokedTrue() {
+  @Test public void isRevokedTrue() {
     doReturn(true).when(rxPermission).isMarshmallow();
     doReturn(pm).when(context).getPackageManager();
     doReturn("Test1234").when(context).getPackageName();
@@ -260,7 +259,7 @@ import static org.mockito.quality.Strictness.WARN;
     assertThat(rxPermission.isRevokedByPolicy("p")).isTrue();
   }
 
-  @Test @TargetApi(M) public void isGrantedFalse() {
+  @Test public void isGrantedFalse() {
     doReturn(true).when(rxPermission).isMarshmallow();
     doReturn(pm).when(context).getPackageManager();
     doReturn("Test1234").when(context).getPackageName();
