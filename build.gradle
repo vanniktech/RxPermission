@@ -30,7 +30,7 @@ buildscript {
 
         'junitExt': "androidx.test.ext:junit:1.2.1",
         'runner': "androidx.test:runner:1.5.2",
-        'rules': "androidx.test:rules:1.5.0",
+        'rules': "androidx.test:rules:1.6.1",
         'uiautomator': 'androidx.test.uiautomator:uiautomator:2.3.0',
       ],
     ],
