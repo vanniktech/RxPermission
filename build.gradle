@@ -82,6 +82,5 @@ subprojects {
   repositories {
     mavenCentral()
     google()
-    jcenter()
   }
 }
