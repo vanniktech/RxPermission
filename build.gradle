@@ -19,7 +19,7 @@ buildscript {
     ],
     'support': [
       'appCompat': "androidx.appcompat:appcompat:1.6.1",
-      'annotation': "androidx.annotation:annotation:1.9.1",
+      'annotation': "androidx.annotation:annotation:1.10.0",
 
       'test': [
         'espresso': [
